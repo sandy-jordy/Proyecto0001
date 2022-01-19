@@ -1,0 +1,21 @@
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\bin\Release\SISTEMA VET-UCN.exe.config
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.ANTECEDENTE.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.CARGO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.DATOS_MEDIO_AMBIENTSLES.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.Form_SIGNOS_VITALES.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormCONSULTA.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormESPECIE.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormFARMACO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormPRINCIPAL.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormPROVEEDOR.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormRAZA.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormREGISTRAR_CLIENTE.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormREGISTRAR_MASCOTA.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FrmVETERINARIO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormSESION.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormSEXO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.FormVENTA.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.HISTORIAL_CLINICO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.frmINVENTARIO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA_VET.PRESENTACION_DE_PRODUCTO.resources
+C:\Users\User\Desktop\SISTEMA VET UCN\SISTEMA VET\obj\Release\SISTEMA VET-UCN.vbproj.GenerateResource.Cache

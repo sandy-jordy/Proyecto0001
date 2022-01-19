@@ -1,0 +1,70 @@
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\SISTEMA_VET.exe.config
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\SISTEMA_VET.exe
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\SISTEMA_VET.pdb
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\SISTEMA_VET.xml
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\Microsoft.Data.Tools.Components.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\stdole.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\bin\Debug\es\Microsoft.Data.Tools.Components.resources.dll
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_CA.vbprojAssemblyReference.cache
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.Resources.resources
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.GenerateResource.cache
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.CoreCompileInputs.cache
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.CopyComplete
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.exe
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.xml
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.pdb
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmEmpleado.resources
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsistencia.resources
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmEmpleado_Asistencia.resources
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmCargos.resources
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmPrincipal.resources
+C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsignacion.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.exe.config
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.exe
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.pdb
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.xml
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\Microsoft.Data.Tools.Components.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\stdole.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\es\Microsoft.Data.Tools.Components.resources.dll
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbprojAssemblyReference.cache
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.Resources.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsignacion.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsistencia.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmEmpleado.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmEmpleado_Asistencia.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmCargos.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmPrincipal.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.GenerateResource.cache
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.CopyComplete
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.exe
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.xml
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.pdb
