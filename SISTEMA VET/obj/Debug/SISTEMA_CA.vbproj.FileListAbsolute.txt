@@ -33,10 +33,6 @@ C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incana
 C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmCargos.resources
 C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmPrincipal.resources
 C:\Users\Usuario\Pictures\Sistema de Ventas C# - SQL Server 2014 (Free) - Incanatoit\03 DE SEPT - copia\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsignacion.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.exe.config
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.exe
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.pdb
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_VET.xml
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\Microsoft.Data.Tools.Components.dll
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\ShockwaveFlashObjects.dll
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
@@ -55,16 +51,20 @@ C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\CrystalDecision
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\es\Microsoft.Data.Tools.Components.resources.dll
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbprojAssemblyReference.cache
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.Resources.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsignacion.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmAsistencia.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmEmpleado.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmEmpleado_Asistencia.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmCargos.resources
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.frmPrincipal.resources
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.GenerateResource.cache
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.CoreCompileInputs.cache
 C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.vbproj.CopyComplete
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.exe
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.xml
-C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_VET.pdb
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_CA.exe.config
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_CA.exe
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_CA.pdb
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\bin\Debug\SISTEMA_CA.xml
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.Resources.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.frmAsignacion.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.frmAsistencia.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.frmEmpleado.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.frmEmpleado_Asistencia.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.frmCargos.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.frmPrincipal.resources
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.exe
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.xml
+C:\Users\Usuario\source\repos\Proyecto0001\SISTEMA VET\obj\Debug\SISTEMA_CA.pdb
