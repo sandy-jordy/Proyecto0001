@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Control_de_asistenciaModelStoreContainer" CdmEntityContainer="Control_de_asistenciaEntities">
+    <EntitySetMapping Name="Agencia">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Agencia">
+        <MappingFragment StoreEntitySet="Agencia">
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+          <ScalarProperty Name="Nombre_agencia" ColumnName="Nombre_agencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Asignacion">
+        <MappingFragment StoreEntitySet="Asignacion">
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+          <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Camion" ColumnName="Camion" />
+          <ScalarProperty Name="Cajas" ColumnName="Cajas" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asistencia">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Asistencia">
+        <MappingFragment StoreEntitySet="Asistencia">
+          <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="Fecha_asistencia" ColumnName="Fecha_asistencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Concepto">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Concepto">
+        <MappingFragment StoreEntitySet="Concepto">
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="Concepto1" ColumnName="Concepto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Detalle_asignacion">
+        <MappingFragment StoreEntitySet="Detalle_asignacion">
+          <ScalarProperty Name="id_detalle_asignacion" ColumnName="id_detalle_asignacion" />
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="id_tipo_asignacion" ColumnName="id_tipo_asignacion" />
+          <ScalarProperty Name="id_escala_asignacion" ColumnName="id_escala_asignacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="Primer_nombre" ColumnName="Primer_nombre" />
+          <ScalarProperty Name="Segundo_nombre" ColumnName="Segundo_nombre" />
+          <ScalarProperty Name="Primer_apellido" ColumnName="Primer_apellido" />
+          <ScalarProperty Name="Segundo_apellido" ColumnName="Segundo_apellido" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Escala_asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Escala_asignacion">
+        <MappingFragment StoreEntitySet="Escala_asignacion">
+          <ScalarProperty Name="id_escala_asignacion" ColumnName="id_escala_asignacion" />
+          <ScalarProperty Name="Escala_asignacion1" ColumnName="Escala_asignacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pais">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Pais">
+        <MappingFragment StoreEntitySet="Pais">
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="Nombre_pais" ColumnName="Nombre_pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ruta">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Ruta">
+        <MappingFragment StoreEntitySet="Ruta">
+          <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+          <ScalarProperty Name="Ruta1" ColumnName="Ruta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Tipo_asignacion">
+        <MappingFragment StoreEntitySet="Tipo_asignacion">
+          <ScalarProperty Name="id_tipo_asignacion" ColumnName="id_tipo_asignacion" />
+          <ScalarProperty Name="Tipo_asignacion1" ColumnName="Tipo_asignacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Control_de_asistenciaModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Control_de_asistenciaModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Control_de_asistenciaModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_editar_agencia" FunctionName="Control_de_asistenciaModel.Store.SP_editar_agencia" />
+    <FunctionImportMapping FunctionImportName="SP_editar_asistencia" FunctionName="Control_de_asistenciaModel.Store.SP_editar_asistencia" />
+    <FunctionImportMapping FunctionImportName="SP_editar_cargo" FunctionName="Control_de_asistenciaModel.Store.SP_editar_cargo" />
+    <FunctionImportMapping FunctionImportName="SP_editar_concepto" FunctionName="Control_de_asistenciaModel.Store.SP_editar_concepto" />
+    <FunctionImportMapping FunctionImportName="SP_editar_empleado" FunctionName="Control_de_asistenciaModel.Store.SP_editar_empleado" />
+    <FunctionImportMapping FunctionImportName="SP_eliminar_agencia" FunctionName="Control_de_asistenciaModel.Store.SP_eliminar_agencia" />
+    <FunctionImportMapping FunctionImportName="SP_eliminar_cargo" FunctionName="Control_de_asistenciaModel.Store.SP_eliminar_cargo" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Control_de_asistenciaModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Control_de_asistenciaModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_insertar_agencia" FunctionName="Control_de_asistenciaModel.Store.SP_insertar_agencia" />
+    <FunctionImportMapping FunctionImportName="SP_insertar_asistencia" FunctionName="Control_de_asistenciaModel.Store.SP_insertar_asistencia" />
+    <FunctionImportMapping FunctionImportName="SP_insertar_cargo" FunctionName="Control_de_asistenciaModel.Store.SP_insertar_cargo" />
+    <FunctionImportMapping FunctionImportName="SP_insertar_concepto" FunctionName="Control_de_asistenciaModel.Store.SP_insertar_concepto" />
+    <FunctionImportMapping FunctionImportName="SP_insertar_empleado" FunctionName="Control_de_asistenciaModel.Store.SP_insertar_empleado" />
+    <FunctionImportMapping FunctionImportName="SP_Mostrar_cargo" FunctionName="Control_de_asistenciaModel.Store.SP_Mostrar_cargo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_Mostrar_cargo_Result">
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_mostrar_concepto" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_concepto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_concepto_Result">
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_mostrar_empleado" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleado_Result">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="Primer_nombre" ColumnName="Primer_nombre" />
+          <ScalarProperty Name="Segundo_nombre" ColumnName="Segundo_nombre" />
+          <ScalarProperty Name="Primer_apellido" ColumnName="Primer_apellido" />
+          <ScalarProperty Name="Segundo_apellido" ColumnName="Segundo_apellido" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_Activos" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_Activos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Control_de_asistenciaModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Control_de_asistenciaModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

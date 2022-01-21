@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05a2a07b0ac94e2a829154a2fa889bbc" Name="Diagram1">
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Agencia" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Asignacion" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Asistencia" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Cargo" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Concepto" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Detalle_asignacion" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Empleado" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Escala_asignacion" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Pais" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Ruta" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Control_de_asistenciaModel.Tipo_asignacion" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Asignacion_Agencia" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Asignacion_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Asignacion_Ruta" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Detalle_asignacion_Asignacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Asistencia_Concepto" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Asistencia_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Empleado_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Detalle_asignacion_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Detalle_asignacion_Escala_asignacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Control_de_asistenciaModel.FK_Detalle_asignacion_Tipo_asignacion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Control_de_asistenciaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agencia">
+    <Key>
+      <PropertyRef Name="id_agencia" />
+    </Key>
+    <Property Name="id_agencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_agencia" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Asignacion">
+    <Key>
+      <PropertyRef Name="id_asignacion" />
+    </Key>
+    <Property Name="id_asignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_agencia" Type="int" Nullable="false" />
+    <Property Name="id_ruta" Type="int" Nullable="false" />
+    <Property Name="id_pais" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Camion" Type="nvarchar" MaxLength="30" />
+    <Property Name="Cajas" Type="int" />
+    <Property Name="KM" Type="float" />
+  </EntityType>
+  <EntityType Name="Asistencia">
+    <Key>
+      <PropertyRef Name="id_asistencia" />
+    </Key>
+    <Property Name="id_asistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="id_concepto" Type="int" Nullable="false" />
+    <Property Name="Fecha_asistencia" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="id_cargo" />
+    </Key>
+    <Property Name="id_cargo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_cargo" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Concepto">
+    <Key>
+      <PropertyRef Name="id_concepto" />
+    </Key>
+    <Property Name="id_concepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Concepto" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle_asignacion">
+    <Key>
+      <PropertyRef Name="id_detalle_asignacion" />
+    </Key>
+    <Property Name="id_detalle_asignacion" Type="int" Nullable="false" />
+    <Property Name="id_asignacion" Type="int" Nullable="false" />
+    <Property Name="id_empleado" Type="int" Nullable="false" />
+    <Property Name="id_tipo_asignacion" Type="int" />
+    <Property Name="id_escala_asignacion" Type="int" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Primer_nombre" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Segundo_nombre" Type="nvarchar" MaxLength="15" />
+    <Property Name="Primer_apellido" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Segundo_apellido" Type="nvarchar" MaxLength="15" />
+    <Property Name="Fecha_ingreso" Type="date" Nullable="false" />
+    <Property Name="id_cargo" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Escala_asignacion">
+    <Key>
+      <PropertyRef Name="id_escala_asignacion" />
+    </Key>
+    <Property Name="id_escala_asignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Escala_asignacion" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="id_pais" />
+    </Key>
+    <Property Name="id_pais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_pais" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ruta">
+    <Key>
+      <PropertyRef Name="id_ruta" />
+    </Key>
+    <Property Name="id_ruta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ruta" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tipo_asignacion">
+    <Key>
+      <PropertyRef Name="id_tipo_asignacion" />
+    </Key>
+    <Property Name="id_tipo_asignacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo_asignacion" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Asignacion_Agencia">
+    <End Role="Agencia" Type="Self.Agencia" Multiplicity="1" />
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agencia">
+        <PropertyRef Name="id_agencia" />
+      </Principal>
+      <Dependent Role="Asignacion">
+        <PropertyRef Name="id_agencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asignacion_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id_pais" />
+      </Principal>
+      <Dependent Role="Asignacion">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asignacion_Ruta">
+    <End Role="Ruta" Type="Self.Ruta" Multiplicity="1" />
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ruta">
+        <PropertyRef Name="id_ruta" />
+      </Principal>
+      <Dependent Role="Asignacion">
+        <PropertyRef Name="id_ruta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asistencia_Concepto">
+    <End Role="Concepto" Type="Self.Concepto" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Concepto">
+        <PropertyRef Name="id_concepto" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="id_concepto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asistencia_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Asignacion">
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asignacion">
+        <PropertyRef Name="id_asignacion" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Escala_asignacion">
+    <End Role="Escala_asignacion" Type="Self.Escala_asignacion" Multiplicity="0..1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escala_asignacion">
+        <PropertyRef Name="id_escala_asignacion" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_escala_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Tipo_asignacion">
+    <End Role="Tipo_asignacion" Type="Self.Tipo_asignacion" Multiplicity="0..1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_asignacion">
+        <PropertyRef Name="id_tipo_asignacion" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_tipo_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Cargo">
+    <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="id_cargo" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="id_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_editar_agencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_agencia" Type="int" Mode="In" />
+    <Parameter Name="nombre_agencia" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_editar_asistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_asistencia" Type="int" Mode="In" />
+    <Parameter Name="id_empleado" Type="int" Mode="In" />
+    <Parameter Name="id_concepto" Type="int" Mode="In" />
+    <Parameter Name="Fecha_asistencia" Type="date" Mode="In" />
+  </Function>
+  <Function Name="SP_editar_cargo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cargo" Type="int" Mode="In" />
+    <Parameter Name="Nombre_cargo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_editar_concepto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_concepto" Type="int" Mode="In" />
+    <Parameter Name="concepto" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_editar_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_empleado" Type="int" Mode="In" />
+    <Parameter Name="primer_n" Type="nvarchar" Mode="In" />
+    <Parameter Name="segundo_n" Type="nvarchar" Mode="In" />
+    <Parameter Name="pri_apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="seg_apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha_ingreso" Type="date" Mode="In" />
+    <Parameter Name="id_cargo" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_eliminar_agencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_agencia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_eliminar_cargo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cargo" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_insertar_agencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombre_agencia" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_insertar_asistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_asistencia" Type="int" Mode="InOut" />
+    <Parameter Name="id_empleado" Type="int" Mode="In" />
+    <Parameter Name="id_concepto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_insertar_cargo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_cargo" Type="int" Mode="InOut" />
+    <Parameter Name="Nombre_cargo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_insertar_concepto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="concepto" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_insertar_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_empleado" Type="int" Mode="InOut" />
+    <Parameter Name="primer_n" Type="nvarchar" Mode="In" />
+    <Parameter Name="segundo_n" Type="nvarchar" Mode="In" />
+    <Parameter Name="pri_apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="seg_apellido" Type="nvarchar" Mode="In" />
+    <Parameter Name="fecha_ingreso" Type="date" Mode="In" />
+    <Parameter Name="id_cargo" Type="int" Mode="In" />
+    <Parameter Name="estado" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Mostrar_cargo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_mostrar_concepto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_mostrar_empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_mostrar_empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Control_de_asistenciaModelStoreContainer">
+    <EntitySet Name="Agencia" EntityType="Self.Agencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asignacion" EntityType="Self.Asignacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Asistencia" EntityType="Self.Asistencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Concepto" EntityType="Self.Concepto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle_asignacion" EntityType="Self.Detalle_asignacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Escala_asignacion" EntityType="Self.Escala_asignacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ruta" EntityType="Self.Ruta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_asignacion" EntityType="Self.Tipo_asignacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Asignacion_Agencia" Association="Self.FK_Asignacion_Agencia">
+      <End Role="Agencia" EntitySet="Agencia" />
+      <End Role="Asignacion" EntitySet="Asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asignacion_Pais" Association="Self.FK_Asignacion_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Asignacion" EntitySet="Asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asignacion_Ruta" Association="Self.FK_Asignacion_Ruta">
+      <End Role="Ruta" EntitySet="Ruta" />
+      <End Role="Asignacion" EntitySet="Asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asistencia_Concepto" Association="Self.FK_Asistencia_Concepto">
+      <End Role="Concepto" EntitySet="Concepto" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asistencia_Empleado" Association="Self.FK_Asistencia_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Asignacion" Association="Self.FK_Detalle_asignacion_Asignacion">
+      <End Role="Asignacion" EntitySet="Asignacion" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Empleado" Association="Self.FK_Detalle_asignacion_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Escala_asignacion" Association="Self.FK_Detalle_asignacion_Escala_asignacion">
+      <End Role="Escala_asignacion" EntitySet="Escala_asignacion" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Tipo_asignacion" Association="Self.FK_Detalle_asignacion_Tipo_asignacion">
+      <End Role="Tipo_asignacion" EntitySet="Tipo_asignacion" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Cargo" Association="Self.FK_Empleado_Cargo">
+      <End Role="Cargo" EntitySet="Cargo" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

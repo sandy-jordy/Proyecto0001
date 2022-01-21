@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Control_de_asistenciaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agencia">
+    <Key>
+      <PropertyRef Name="id_agencia" />
+    </Key>
+    <Property Name="id_agencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_agencia" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Asignacion" Relationship="Self.FK_Asignacion_Agencia" FromRole="Agencia" ToRole="Asignacion" />
+  </EntityType>
+  <EntityType Name="Asignacion">
+    <Key>
+      <PropertyRef Name="id_asignacion" />
+    </Key>
+    <Property Name="id_asignacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_agencia" Type="Int32" Nullable="false" />
+    <Property Name="id_ruta" Type="Int32" Nullable="false" />
+    <Property Name="id_pais" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Camion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Cajas" Type="Int32" />
+    <Property Name="KM" Type="Double" />
+    <NavigationProperty Name="Agencia" Relationship="Self.FK_Asignacion_Agencia" FromRole="Asignacion" ToRole="Agencia" />
+    <NavigationProperty Name="Pais" Relationship="Self.FK_Asignacion_Pais" FromRole="Asignacion" ToRole="Pais" />
+    <NavigationProperty Name="Ruta" Relationship="Self.FK_Asignacion_Ruta" FromRole="Asignacion" ToRole="Ruta" />
+    <NavigationProperty Name="Detalle_asignacion" Relationship="Self.FK_Detalle_asignacion_Asignacion" FromRole="Asignacion" ToRole="Detalle_asignacion" />
+  </EntityType>
+  <EntityType Name="Asistencia">
+    <Key>
+      <PropertyRef Name="id_asistencia" />
+    </Key>
+    <Property Name="id_asistencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="id_concepto" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_asistencia" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Concepto" Relationship="Self.FK_Asistencia_Concepto" FromRole="Asistencia" ToRole="Concepto" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Asistencia_Empleado" FromRole="Asistencia" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="id_cargo" />
+    </Key>
+    <Property Name="id_cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_cargo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Cargo" FromRole="Cargo" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Concepto">
+    <Key>
+      <PropertyRef Name="id_concepto" />
+    </Key>
+    <Property Name="id_concepto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Concepto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Asistencia" Relationship="Self.FK_Asistencia_Concepto" FromRole="Concepto" ToRole="Asistencia" />
+  </EntityType>
+  <EntityType Name="Detalle_asignacion">
+    <Key>
+      <PropertyRef Name="id_detalle_asignacion" />
+    </Key>
+    <Property Name="id_detalle_asignacion" Type="Int32" Nullable="false" />
+    <Property Name="id_asignacion" Type="Int32" Nullable="false" />
+    <Property Name="id_empleado" Type="Int32" Nullable="false" />
+    <Property Name="id_tipo_asignacion" Type="Int32" />
+    <Property Name="id_escala_asignacion" Type="Int32" />
+    <NavigationProperty Name="Asignacion" Relationship="Self.FK_Detalle_asignacion_Asignacion" FromRole="Detalle_asignacion" ToRole="Asignacion" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK_Detalle_asignacion_Empleado" FromRole="Detalle_asignacion" ToRole="Empleado" />
+    <NavigationProperty Name="Escala_asignacion" Relationship="Self.FK_Detalle_asignacion_Escala_asignacion" FromRole="Detalle_asignacion" ToRole="Escala_asignacion" />
+    <NavigationProperty Name="Tipo_asignacion" Relationship="Self.FK_Detalle_asignacion_Tipo_asignacion" FromRole="Detalle_asignacion" ToRole="Tipo_asignacion" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="id_empleado" />
+    </Key>
+    <Property Name="id_empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Primer_nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Segundo_nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Primer_apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Segundo_apellido" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Fecha_ingreso" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_cargo" Type="Int32" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Asistencia" Relationship="Self.FK_Asistencia_Empleado" FromRole="Empleado" ToRole="Asistencia" />
+    <NavigationProperty Name="Cargo" Relationship="Self.FK_Empleado_Cargo" FromRole="Empleado" ToRole="Cargo" />
+    <NavigationProperty Name="Detalle_asignacion" Relationship="Self.FK_Detalle_asignacion_Empleado" FromRole="Empleado" ToRole="Detalle_asignacion" />
+  </EntityType>
+  <EntityType Name="Escala_asignacion">
+    <Key>
+      <PropertyRef Name="id_escala_asignacion" />
+    </Key>
+    <Property Name="id_escala_asignacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Escala_asignacion1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Detalle_asignacion" Relationship="Self.FK_Detalle_asignacion_Escala_asignacion" FromRole="Escala_asignacion" ToRole="Detalle_asignacion" />
+  </EntityType>
+  <EntityType Name="Pais">
+    <Key>
+      <PropertyRef Name="id_pais" />
+    </Key>
+    <Property Name="id_pais" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre_pais" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Asignacion" Relationship="Self.FK_Asignacion_Pais" FromRole="Pais" ToRole="Asignacion" />
+  </EntityType>
+  <EntityType Name="Ruta">
+    <Key>
+      <PropertyRef Name="id_ruta" />
+    </Key>
+    <Property Name="id_ruta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ruta1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Asignacion" Relationship="Self.FK_Asignacion_Ruta" FromRole="Ruta" ToRole="Asignacion" />
+  </EntityType>
+  <EntityType Name="Tipo_asignacion">
+    <Key>
+      <PropertyRef Name="id_tipo_asignacion" />
+    </Key>
+    <Property Name="id_tipo_asignacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo_asignacion1" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Detalle_asignacion" Relationship="Self.FK_Detalle_asignacion_Tipo_asignacion" FromRole="Tipo_asignacion" ToRole="Detalle_asignacion" />
+  </EntityType>
+  <Association Name="FK_Asignacion_Agencia">
+    <End Role="Agencia" Type="Self.Agencia" Multiplicity="1" />
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agencia">
+        <PropertyRef Name="id_agencia" />
+      </Principal>
+      <Dependent Role="Asignacion">
+        <PropertyRef Name="id_agencia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asignacion_Pais">
+    <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pais">
+        <PropertyRef Name="id_pais" />
+      </Principal>
+      <Dependent Role="Asignacion">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asignacion_Ruta">
+    <End Role="Ruta" Type="Self.Ruta" Multiplicity="1" />
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ruta">
+        <PropertyRef Name="id_ruta" />
+      </Principal>
+      <Dependent Role="Asignacion">
+        <PropertyRef Name="id_ruta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Asignacion">
+    <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asignacion">
+        <PropertyRef Name="id_asignacion" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asistencia_Concepto">
+    <End Role="Concepto" Type="Self.Concepto" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Concepto">
+        <PropertyRef Name="id_concepto" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="id_concepto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Asistencia_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleado_Cargo">
+    <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="id_cargo" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="id_cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id_empleado" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Escala_asignacion">
+    <End Role="Escala_asignacion" Type="Self.Escala_asignacion" Multiplicity="0..1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escala_asignacion">
+        <PropertyRef Name="id_escala_asignacion" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_escala_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_asignacion_Tipo_asignacion">
+    <End Role="Tipo_asignacion" Type="Self.Tipo_asignacion" Multiplicity="0..1" />
+    <End Role="Detalle_asignacion" Type="Self.Detalle_asignacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_asignacion">
+        <PropertyRef Name="id_tipo_asignacion" />
+      </Principal>
+      <Dependent Role="Detalle_asignacion">
+        <PropertyRef Name="id_tipo_asignacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Control_de_asistenciaEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agencia" EntityType="Self.Agencia" />
+    <EntitySet Name="Asignacion" EntityType="Self.Asignacion" />
+    <EntitySet Name="Asistencia" EntityType="Self.Asistencia" />
+    <EntitySet Name="Cargo" EntityType="Self.Cargo" />
+    <EntitySet Name="Concepto" EntityType="Self.Concepto" />
+    <EntitySet Name="Detalle_asignacion" EntityType="Self.Detalle_asignacion" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+    <EntitySet Name="Escala_asignacion" EntityType="Self.Escala_asignacion" />
+    <EntitySet Name="Pais" EntityType="Self.Pais" />
+    <EntitySet Name="Ruta" EntityType="Self.Ruta" />
+    <EntitySet Name="Tipo_asignacion" EntityType="Self.Tipo_asignacion" />
+    <AssociationSet Name="FK_Asignacion_Agencia" Association="Self.FK_Asignacion_Agencia">
+      <End Role="Agencia" EntitySet="Agencia" />
+      <End Role="Asignacion" EntitySet="Asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asignacion_Pais" Association="Self.FK_Asignacion_Pais">
+      <End Role="Pais" EntitySet="Pais" />
+      <End Role="Asignacion" EntitySet="Asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asignacion_Ruta" Association="Self.FK_Asignacion_Ruta">
+      <End Role="Ruta" EntitySet="Ruta" />
+      <End Role="Asignacion" EntitySet="Asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Asignacion" Association="Self.FK_Detalle_asignacion_Asignacion">
+      <End Role="Asignacion" EntitySet="Asignacion" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asistencia_Concepto" Association="Self.FK_Asistencia_Concepto">
+      <End Role="Concepto" EntitySet="Concepto" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Asistencia_Empleado" Association="Self.FK_Asistencia_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleado_Cargo" Association="Self.FK_Empleado_Cargo">
+      <End Role="Cargo" EntitySet="Cargo" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Empleado" Association="Self.FK_Detalle_asignacion_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Escala_asignacion" Association="Self.FK_Detalle_asignacion_Escala_asignacion">
+      <End Role="Escala_asignacion" EntitySet="Escala_asignacion" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_asignacion_Tipo_asignacion" Association="Self.FK_Detalle_asignacion_Tipo_asignacion">
+      <End Role="Tipo_asignacion" EntitySet="Tipo_asignacion" />
+      <End Role="Detalle_asignacion" EntitySet="Detalle_asignacion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
