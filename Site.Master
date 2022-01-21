@@ -53,7 +53,8 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         
-                        <li><a runat="server" href="~/Views/Empleado/Empleado">registro de Empleado</a></li>
+                        <li><a runat="server" href="~/Views/Empleado/Empleado1">registro de Empleado</a></li>
+                        <li><a runat="server" href="~/Views/Cargo/Cargo">Cargo</a></li>
                     </ul>
                 </div>
             </div>

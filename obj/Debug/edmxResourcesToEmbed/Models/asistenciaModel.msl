@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Control_de_asistenciaModelStoreContainer" CdmEntityContainer="asistenciaEntities">
+    <EntitySetMapping Name="Agencia">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Agencia">
+        <MappingFragment StoreEntitySet="Agencia">
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+          <ScalarProperty Name="Nombre_agencia" ColumnName="Nombre_agencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Asignacion">
+        <MappingFragment StoreEntitySet="Asignacion">
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+          <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Camion" ColumnName="Camion" />
+          <ScalarProperty Name="Cajas" ColumnName="Cajas" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Asistencia">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Asistencia">
+        <MappingFragment StoreEntitySet="Asistencia">
+          <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="Fecha_asistencia" ColumnName="Fecha_asistencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Concepto">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Concepto">
+        <MappingFragment StoreEntitySet="Concepto">
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="Concepto1" ColumnName="Concepto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalle_asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Detalle_asignacion">
+        <MappingFragment StoreEntitySet="Detalle_asignacion">
+          <ScalarProperty Name="id_detalle_asignacion" ColumnName="id_detalle_asignacion" />
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="id_tipo_asignacion" ColumnName="id_tipo_asignacion" />
+          <ScalarProperty Name="id_escala_asignacion" ColumnName="id_escala_asignacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="Primer_nombre" ColumnName="Primer_nombre" />
+          <ScalarProperty Name="Segundo_nombre" ColumnName="Segundo_nombre" />
+          <ScalarProperty Name="Primer_apellido" ColumnName="Primer_apellido" />
+          <ScalarProperty Name="Segundo_apellido" ColumnName="Segundo_apellido" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="id_cargo" ColumnName="id_cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Escala_asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Escala_asignacion">
+        <MappingFragment StoreEntitySet="Escala_asignacion">
+          <ScalarProperty Name="id_escala_asignacion" ColumnName="id_escala_asignacion" />
+          <ScalarProperty Name="Escala_asignacion1" ColumnName="Escala_asignacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pais">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Pais">
+        <MappingFragment StoreEntitySet="Pais">
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="Nombre_pais" ColumnName="Nombre_pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ruta">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Ruta">
+        <MappingFragment StoreEntitySet="Ruta">
+          <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+          <ScalarProperty Name="Ruta1" ColumnName="Ruta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_asignacion">
+      <EntityTypeMapping TypeName="Control_de_asistenciaModel.Tipo_asignacion">
+        <MappingFragment StoreEntitySet="Tipo_asignacion">
+          <ScalarProperty Name="id_tipo_asignacion" ColumnName="id_tipo_asignacion" />
+          <ScalarProperty Name="Tipo_asignacion1" ColumnName="Tipo_asignacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

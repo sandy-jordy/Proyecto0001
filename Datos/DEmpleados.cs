@@ -13,6 +13,12 @@ namespace SIS_CA.Datos
         SqlDataReader leer;
         DataTable tabla = new DataTable();
         SqlCommand comando = new SqlCommand();
+
+        /*public List<Empleado> Consultar()
+        {
+            using (asistenciaEntities contexto)
+        }*/
+
         public DataTable Mostrar()
         {
 
