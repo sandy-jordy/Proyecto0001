@@ -1222,6 +1222,7 @@ h2,
 .h2,
 h3,
 .h3 {
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 h1 small,
@@ -4182,8 +4183,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: 0;
 }
 .nav-justified {
-  width: 98%;
-    height: 220px;
+  width: 100%;
 }
 .nav-justified > li {
   float: none;

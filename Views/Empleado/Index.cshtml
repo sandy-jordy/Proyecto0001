@@ -1,18 +1,182 @@
 ﻿
 @{
-    ViewBag.Title = "Alumna";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<br />
-<h4>Gestión de Empleados</h4>
-<div class="alert alert-@ViewBag.alerta"> - - <b>@ViewBag.res</b> - - </div>
-<form action="/Alumno/Index" method="post">
-    <table>
-        <tr>
-            <td style=""></td>
-        </tr>
-    </table>
-</form>
-<br />
-<br />
+</head>
+<body>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                REGISTRO DE EMPLEADOS
+            </div>
+            <br />
+            <div>
+                <button id="btnagregar" Class="btn btn-primary">Agregar</button>
+            </div>
+            <br />
+
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/" method="post">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Primer nombre</label>
+                                        <input type="email" class="form-control" id="Pnombre" placeholder="Primer Nombre">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Segundo nombre</label>
+                                        <input type="password" class="form-control" id="Snombre" placeholder="Segundo Nombre">
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Primer apellido</label>
+                                        <input type="email" class="form-control" id="Papellido" placeholder="Primer apellido">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Sapellido">Segundo apellido</label>
+                                        <input type="text" class="form-control" id="Sapellido" placeholder="Segundo apellido">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Cargo</label>
+                                        <select id="cargos" class="form-control">
+                                            <option selected>Seleccione un cargo:</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Sapellido">Fecha ingreso</label>
+                                        <input type="date" class="form-control" id="Sapellido" placeholder="Segundo apellido">
+                                    </div>
+                                </div>
+                                    
+
+                            </form>
+
+                           
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-body">
+                <table id="tdempleado" class="table">
+                    <thead>
+                        <tr>
+                            <th>primer_nombre</th>
+                            <th>segundo_nombre</th>
+                            <th>primer_apellido</th>
+                            <th>segundo_apellido</th>
+                            <th>fecha_ingreso</th>
+                            <th>id_cargo</th>
+                            <th>estado</th>
+                            <th>Mantenimiento</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+    </html>
+
+    @section scripts{
+        <script>
+
+            $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Tipo_cargo", "Empleado")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#cargos');
+                        var datos = data.data;
+                        $(datos).each(function (i, v) {
+                            cargos.append('<option value="' + v.id_cargo + '">' + v.Nombre_cargo + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+            });
+
+
+    $(document).ready(function () {
+        $('#tdempleado').DataTable({
+            "ajax": {
+                "url":"@Url.Action("Listar","Empleado")",
+                "type": "GET",
+                "contentType":"application/json; charset=utf-8",
+                "dataType":"json"
+            },
+            "columns": [
+                { "data": "Primer_nombre", "autoWidth": true },
+                { "data": "Segundo_nombre", "autoWidth": true },
+                { "data": "Primer_apellido", "autoWidth": true },
+                { "data": "Segundo_apellido", "autoWidth": true },
+                { "data": "Fecha_ingreso", "autoWidth": true, type: 'string' },
+                { "data": "id_cargo", "autoWidth": true },
+                { "data": "Estado", "autoWidth": true },
+                {
+                    "data": "id_empleado", "autoWidth": true, "render": function (data) {
+                        return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirmodal(" + data + ")'><i class='fas fa-pen'></i></button>" +
+                            "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                    }
+                }]
+        });
+    });
+
+    function abrirmodal($idpersona) {
+        alert($idpersona);
+    }
+    function eliminar($idpersona) {
+        alert("Eliminar: "+$idpersona);
+    }
+
+    $(document).ready(function () {
+        $('#btnagregar').click(function (e) {
+            $('#exampleModalCenter').modal('show');
+        });
+    });
+
+
+
+
+
+
+        </script>
+    }
+

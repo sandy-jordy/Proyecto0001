@@ -1,40 +1,41 @@
-﻿using SIS_CA.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-
-
-namespace SIS_CA.Controllers
+using WebAppCA.Models;
+namespace WebAppCA.Controllers
 {
     public class EmpleadoController : Controller
     {
-        private Empleado en = new Empleado();
-        [HttpGet]
         // GET: Empleado
         public ActionResult Index()
         {
-            ViewBag.alerta = "info";
-            ViewBag.res = "Resgistrar nuevo empleado";
-            return View(en.Listar());
-            
+           
+            return View();
         }
-        [HttpPost]
-        public ActionResult Index(string Primer_nombre, string Segundo_nombre, string Primer_apellido, string Segundo_apellido, DateTime Fecha_ingreso, int id_cargo, string estado)
+        
+
+        public JsonResult Listar()
         {
-            if (en.Insertar(Primer_nombre,Segundo_nombre,Primer_apellido,Segundo_apellido,Fecha_ingreso,id_cargo,estado))
+            List<Empleado> lEmpleado = new List<Empleado>();
+            using (Model db = new Model())
             {
-                ViewBag.alerta = "success";
-                ViewBag.res = "Empleado Registrado";
+                lEmpleado = db.Empleado.ToList();
+                db.Configuration.LazyLoadingEnabled = false;
             }
-            else
-            {
-                ViewBag.alerta = "danger";
-                ViewBag.res = "El empleado no se ha podido registrar";
-            }
-            return View(en.Listar());
+            return Json(new { data = lEmpleado }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult Tipo_cargo()
+        {
+            List<Cargo> cargos = new List<Cargo>();
+            using (Model db = new Model())
+            {
+                cargos = db.Cargo.ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+            }
+            return Json(new { data = cargos }, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

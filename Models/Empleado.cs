@@ -1,11 +1,10 @@
-namespace SIS_CA.Models
+namespace WebAppCA.Models
 {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Linq;
 
     [Table("Empleado")]
     public partial class Empleado
@@ -50,53 +49,5 @@ namespace SIS_CA.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Detalle_asignacion> Detalle_asignacion { get; set; }
-
-        public List<Empleado> Listar()
-        {
-            var Empleado = new List<Empleado>();
-            string cadena = "select * from Empleado";
-            try
-            {
-                using (var contenedor = new Model1())
-                {
-                    Empleado = contenedor.Database.SqlQuery<Empleado>(cadena).ToList();
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            return Empleado;
-
-            
-        }
-
-        public Boolean Insertar(string Primer_nombre, string Segundo_nombre, string Primer_apellido, string Segundo_apellido, DateTime Fecha_ingreso, int id_cargo, string estado)
-        {
-            bool estado1 = false;
-            try
-            {
-                using (var cnx=new Model1())
-                {
-                    string cadena = "insert into Empleado(Primer_nombre,Segundo_nombre,Primer_apellido,Segundo_apellido,Fecha_ingreso,id_cargo,Estado) values('" + Primer_nombre + "','" + Segundo_nombre + "','" + Primer_apellido + "','" + Segundo_apellido + "','" + Fecha_ingreso + "','" + id_cargo + "','" + Estado + "')";
-                    int r = cnx.Database.ExecuteSqlCommand(cadena);
-                    if (r==1)
-                    {
-                        estado1 = true;
-                    }
-
-                }
-
-            }
-            catch (Exception)
-            {
-                estado1 = false;
-
-                throw;
-            }
-            return estado1;
-        }
-
     }
 }

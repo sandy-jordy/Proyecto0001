@@ -1,4 +1,4 @@
-namespace SIS_CA.Models
+namespace WebAppCA.Models
 {
     using System;
     using System.Collections.Generic;
