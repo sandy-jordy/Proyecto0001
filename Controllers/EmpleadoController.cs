@@ -9,7 +9,6 @@ namespace WebAppCA.Controllers
         // GET: Empleado
         public ActionResult Index()
         {
-           
             return View();
         }
         
@@ -26,6 +25,17 @@ namespace WebAppCA.Controllers
         }
 
         public JsonResult Tipo_cargo()
+        {
+            List<Cargo> cargos = new List<Cargo>();
+            using (Model db = new Model())
+            {
+                cargos = db.Cargo.ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+            }
+            return Json(new { data = cargos }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Guardar(int tipo)
         {
             List<Cargo> cargos = new List<Cargo>();
             using (Model db = new Model())

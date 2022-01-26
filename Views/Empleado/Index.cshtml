@@ -28,11 +28,12 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Empleado</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        <br />
                         <div class="modal-body">
                             <form action="/" method="post">
                                 <div class="form-row">
@@ -45,7 +46,7 @@
                                         <input type="password" class="form-control" id="Snombre" placeholder="Segundo Nombre">
                                     </div>
                                 </div>
-                                <br />
+                                
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Papellido">Primer apellido</label>
@@ -68,15 +69,30 @@
                                         <input type="date" class="form-control" id="Sapellido" placeholder="Segundo apellido">
                                     </div>
                                 </div>
-                                    
+                                <div class="form-row">
+                                    <div class="form-group col-12">
+                                        <label for="Papellido">Estado</label>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Activo">
+                                            <label class="form-check-label" for="inlineRadio1">Activo</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Inactivo">
+                                            <label class="form-check-label" for="inlineRadio2">Inactivo</label>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+
 
                             </form>
 
                            
                         </div>
+                        <br />
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </div>
