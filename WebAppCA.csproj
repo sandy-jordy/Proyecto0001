@@ -151,14 +151,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatable\ccs\buttons.dataTables.min.css" />
     <Content Include="Content\datatable\ccs\jquery.dataTables.min.css" />
+    <Content Include="Content\datatable\ccs\responsive.dataTables.min.css" />
     <Content Include="Content\datatable\images\favicon.ico" />
     <Content Include="Content\datatable\images\sort_asc.png" />
     <Content Include="Content\datatable\images\sort_asc_disabled.png" />
     <Content Include="Content\datatable\images\sort_both.png" />
     <Content Include="Content\datatable\images\sort_desc.png" />
     <Content Include="Content\datatable\images\sort_desc_disabled.png" />
+    <Content Include="Content\datatable\js\dataTables.buttons.min.js" />
+    <Content Include="Content\datatable\js\dataTables.responsive.min.js" />
     <Content Include="Content\datatable\js\jquery.dataTables.min.js" />
+    <Content Include="Content\datatable\js\jquery.js" />
     <Content Include="Content\fontawesome-free\attribution.js" />
     <Content Include="Content\fontawesome-free\css\all.css" />
     <Content Include="Content\fontawesome-free\css\all.min.css" />
@@ -1867,6 +1872,7 @@
     <Content Include="Content\fontawesome-free\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\fontawesome-free\webfonts\fa-solid-900.woff" />
     <Content Include="Content\fontawesome-free\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\datatable\idioma\datatable.es-ES.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1878,6 +1884,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -20,7 +20,8 @@ namespace WebAppCA
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.min.js"));
+                      "~/Scripts/bootstrap.min.js",
+                      "~/Scripts/moment.js"));
             // "~/Scripts/bootstrap.min.js")); 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -30,13 +31,18 @@ namespace WebAppCA
                       "~/Content/site.css"));
             bundles.Add(new ScriptBundle("~/bundles/plugin/css").Include(
                       "~/Content/datatable/ccs/jquery.dataTables.min.css",
+                      "~/Content/datatable/css/responsive.dataTables.min.css",
+                        "~/Content/datatable/css/buttons.dataTables.min.css",
                       "~/Content/fontawesome-free/css/all.css"));
       
 
             bundles.Add(new ScriptBundle("~/bundles/plugin/js").Include(
                       "~/Content/datatable/js/jquery.dataTables.min.js",
+                       "~/Content/datatable/js/dataTables.responsive.min.js",
+                        "~/Content/datatable/js/dataTables.buttons.min.js",
                       "~/Content/fontawesome-free/js/all.js"));
-       
+
+
         }
     }
 }

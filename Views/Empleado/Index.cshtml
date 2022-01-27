@@ -19,11 +19,7 @@
                 REGISTRO DE EMPLEADOS
             </div>
             <br />
-            <div>
-                <button id="btnagregar" Class="btn btn-primary">Agregar</button>
-            </div>
-            <br />
-
+            
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -37,13 +33,14 @@
                         <div class="modal-body">
                             <form action="/" method="post">
                                 <div class="form-row">
+                                    <input type="hidden" id="txtIdPersona" />
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Primer nombre</label>
-                                        <input type="email" class="form-control" id="Pnombre" placeholder="Primer Nombre">
+                                        <input type="text" class="form-control" id="Pnombre" placeholder="Primer Nombre">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Segundo nombre</label>
-                                        <input type="password" class="form-control" id="Snombre" placeholder="Segundo Nombre">
+                                        <label for="Snombre4">Segundo nombre</label>
+                                        <input type="text" class="form-control" id="Snombre" placeholder="Segundo Nombre">
                                     </div>
                                 </div>
                                 
@@ -66,22 +63,25 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Sapellido">Fecha ingreso</label>
-                                        <input type="date" class="form-control" id="Sapellido" placeholder="Segundo apellido">
+                                        <input type="date" class="form-control" id="Fingreso" placeholder="">
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-12">
+                                    <div class="form-group col-6">
                                         <label for="Papellido">Estado</label>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Activo">
+                                            <input class="form-check-input" type="radio" name="Estado" id="idEstado1" value="Activo">
                                             <label class="form-check-label" for="inlineRadio1">Activo</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Inactivo">
+                                            <input class="form-check-input" type="radio" name="Estado" id="idEstado2" value="Inactivo">
                                             <label class="form-check-label" for="inlineRadio2">Inactivo</label>
                                         </div>
                                     </div>
-                                   
+                                    <div class="form-group col-md-6">
+                                        
+                                    </div>
+
                                 </div>
 
 
@@ -92,7 +92,7 @@
                         <br />
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
+                            <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
 
 
             <div class="card-body">
-                <table id="tdempleado" class="table">
+                <table id="tdempleado" class="display responsive nowrap" style="width:100%">
                     <thead>
                         <tr>
                             <th>primer_nombre</th>
@@ -128,7 +128,7 @@
     @section scripts{
         <script>
 
-            $(document).ready(function () {
+    $(document).ready(function () {
 
                 $.ajax({
                     url: "@Url.Action("Tipo_cargo", "Empleado")",
@@ -149,9 +149,9 @@
                 });
             });
 
-
+    var tabla_empleado;
     $(document).ready(function () {
-        $('#tdempleado').DataTable({
+        tabla_empleado=$('#tdempleado').DataTable({
             "ajax": {
                 "url":"@Url.Action("Listar","Empleado")",
                 "type": "GET",
@@ -163,34 +163,154 @@
                 { "data": "Segundo_nombre", "autoWidth": true },
                 { "data": "Primer_apellido", "autoWidth": true },
                 { "data": "Segundo_apellido", "autoWidth": true },
-                { "data": "Fecha_ingreso", "autoWidth": true, type: 'string' },
+                { "data": "Fecha_ingreso", "autoWidth": true },
                 { "data": "id_cargo", "autoWidth": true },
                 { "data": "Estado", "autoWidth": true },
                 {
                     "data": "id_empleado", "autoWidth": true, "render": function (data) {
-                        return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirmodal(" + data + ")'><i class='fas fa-pen'></i></button>" +
-                            "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                        return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
+                            "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                    },
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "150px",
+                   
+                }],
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        text: 'Agregar Nuevo',
+                        attr: { class: 'btn btn-success btn-sm' },
+                        action: function (e, dt, node, config) {
+                            abrirModal1(0)
+                        }
                     }
-                }]
+                 ],
+                 "language": {
+                     "url": "@Url.Content("~/Content/datatable/idioma/datatable.es-ES.json")"
+                 }
         });
     });
 
     function abrirmodal($idpersona) {
         alert($idpersona);
-    }
+            }
+
     function eliminar($idpersona) {
         alert("Eliminar: "+$idpersona);
     }
 
     $(document).ready(function () {
         $('#btnagregar').click(function (e) {
-            $('#exampleModalCenter').modal('show');
+            abrirModal1(0);
         });
     });
 
+    function abrirModal1($idpersona) {
+               
+            $("#txtIdPersona").val($idpersona);
+            if ($idpersona != 0) {
+
+                jQuery.ajax({
+                    url: "@Url.Action("Obtener","Empleado")" + "?idempleado=" + $idpersona,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data != null) {
+
+                            $("#Pnombre").val(data.Primer_nombre);
+                            $("#Snombre").val(data.Segundo_nombre);
+                            $("#Papellido").val(data.Primer_apellido);
+                            $("#Sapellido").val(data.Segundo_apellido);
+                            $("#Fingreso").val(moment(data.Fecha_ingreso).format("DD-MM-YYYY"));
+                            
+                            $('#cargos option[value= "' + data.id_cargo + '"]').prop('selected', true);
+                            
+                            if (data.Estado == 'Activo') {
+                                $("input[name=Estado][value=Activo]").prop('checked', true);
+                            } else {
+                                $("input[name=Estado][value=Inactivo]").prop('checked', true);
+                            }
+                            $('#exampleModalCenter').modal('show');
+                        }
+                    }
+                });
+            } else {
+                $("#Pnombre").val("");
+                $("#Snombre").val("");
+                $("#Papellido").val("");
+                $("#Sapellido").val("");
+                $("#Fingreso").val("");
+                $('#cargos option[selected]').prop('selected', true);
+                $("input[name=Estado][value=Activo]").prop('checked', false);
+                $("input[name=Estado][value=Inactivo]").prop('checked', false);
+                $('#exampleModalCenter').modal('show');
+            }
+
+        }
+
+    function Guardar() {
+            var $data = {
+                oEmpleado: {
+                id_empleado: parseInt($("#txtIdPersona").val()),
+                Primer_nombre: $("#Pnombre").val(),
+                Segundo_nombre: $("#Snombre").val(),
+                Primer_apellido: $("#Papellido").val(),
+                Segundo_apellido: $("#Sapellido").val(),
+                Fecha_ingreso: $("#Fingreso").val(),
+                id_cargo: parseInt(document.getElementById('cargos').value),
+                Estado: $('input[name="Estado"]:checked').val()
+                }
+            }
+
+            jQuery.ajax({
+                url: "@Url.Action("Guardar", "Empleado")",
+                type: "POST",
+                data: JSON.stringify($data),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.resultado) {
+                        tabla_empleado.ajax.reload();
+                        $("#exampleModalCenter").modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                    } else {
+                        alert("No se pudo guardar los cambios");
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                }
+            });
+
+        }
+
+    function Eliminar($idempleado) {
+            if (confirm("¿Realmente desea eliminar?")) {
+                jQuery.ajax({
+                    url: "@Url.Action("Eliminar", "Empleado")" + "?idempleado=" + $idempleado,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.resultado) {
+
+                            tabla_empleado.ajax.reload();
+                        }
+                    }
+                });
 
 
-
+            }
+        }
 
 
         </script>
