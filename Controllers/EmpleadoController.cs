@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using WebAppCA.Models;
+using WebAppCA.Entity;
 namespace WebAppCA.Controllers
 {
     public class EmpleadoController : Controller
@@ -15,6 +16,7 @@ namespace WebAppCA.Controllers
 
         public JsonResult Listar()
         {
+            
             List<Empleado> lEmpleado = new List<Empleado>();
             using (Model db = new Model())
             {
@@ -33,6 +35,17 @@ namespace WebAppCA.Controllers
                 db.Configuration.LazyLoadingEnabled = false;
             }
             return Json(new { data = cargos }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Tipo_concepto()
+        {
+            List<Concepto> concepto = new List<Concepto>();
+            using (Model db = new Model())
+            {
+                concepto = db.Concepto.ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+            }
+            return Json(new {data=concepto }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Obtener(int idempleado)
@@ -116,6 +129,39 @@ namespace WebAppCA.Controllers
                 respuesta = false;
             }
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Listar_E(int idempleado)
+        {
+            List<mostrar_empleado_id_Result> lEmpleado = new List<mostrar_empleado_id_Result>();
+            using (Control_de_asistenciaEntities db = new Control_de_asistenciaEntities())
+            {
+                lEmpleado = db.mostrar_empleado_id(idempleado).ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+            }
+            return Json(new { data = lEmpleado }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Listar_EA()
+        {
+            List<SP_mostrar_empleados_Activos_Result> lEmpleado = new List<SP_mostrar_empleados_Activos_Result>();
+            using (Control_de_asistenciaEntities db = new Control_de_asistenciaEntities())
+            {
+                lEmpleado = db.SP_mostrar_empleados_Activos().ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+            }
+            return Json(new { data = lEmpleado }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult Obtener_empAsis(int idempleado)
+        {
+            List<SP_mostrar_empleado_asistencia_Result> lEmpleado = new List<SP_mostrar_empleado_asistencia_Result>();
+            using (Control_de_asistenciaEntities db = new Control_de_asistenciaEntities())
+            {
+                lEmpleado = db.SP_mostrar_empleado_asistencia(idempleado).ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+
+            }
+            return Json(new {data=lEmpleado}, JsonRequestBehavior.AllowGet);
         }
 
 

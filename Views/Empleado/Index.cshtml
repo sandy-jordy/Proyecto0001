@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,6 @@
                 REGISTRO DE EMPLEADOS
             </div>
             <br />
-            
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -43,7 +43,7 @@
                                         <input type="text" class="form-control" id="Snombre" placeholder="Segundo Nombre">
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="Papellido">Primer apellido</label>
@@ -79,7 +79,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        
+
                                     </div>
 
                                 </div>
@@ -87,7 +87,7 @@
 
                             </form>
 
-                           
+
                         </div>
                         <br />
                         <div class="modal-footer">
@@ -127,6 +127,7 @@
 
     @section scripts{
         <script>
+           
 
     $(document).ready(function () {
 
@@ -147,7 +148,17 @@
                     }
 
                 });
-            });
+    });
+            function parseMSDate(s) {
+                if (s != null) {
+                    var dregex = /\/Date\((\d*)\)\//;
+                    var d = dregex.test(s) ? new Date(parseInt(dregex.exec(s)[1])) : s
+                    var fecha_cor = moment(d).format('DD/MM/YYYY');
+                    return fecha_cor;
+                } else {
+                    return fecha_cor = "";
+                }
+            }
 
     var tabla_empleado;
     $(document).ready(function () {
@@ -163,13 +174,12 @@
                 { "data": "Segundo_nombre", "autoWidth": true },
                 { "data": "Primer_apellido", "autoWidth": true },
                 { "data": "Segundo_apellido", "autoWidth": true },
-                { "data": "Fecha_ingreso", "autoWidth": true },
+                {"data": "Fecha_ingreso", "autoWidth": true, "render": function(data){return parseMSDate(data);}},
                 { "data": "id_cargo", "autoWidth": true },
                 { "data": "Estado", "autoWidth": true },
-                {
-                    "data": "id_empleado", "autoWidth": true, "render": function (data) {
-                        return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
-                            "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                {"data": "id_empleado", "autoWidth": true, "render": function (data) {
+                    return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
+                    "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
                     },
                     "orderable": false,
                     "searchable": false,

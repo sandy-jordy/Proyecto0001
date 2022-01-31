@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var fecha_actual = DateTime.Now.ToString("dd/MM/yyyy");
+   
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <br />
+            <div class="card-header">
+                REGISTRO DE ASISTENCIA
+            </div>
+            <br />
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Registro de asistencia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Històrico de asistencia</a>
+                </li>
+            </ul>
+            <br />
+            <div class="tab-content p-0">
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                    <div class="card-body">
+                        <table id="tdempleado" class="display responsive nowrap" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Fecha_ingreso</th>
+                                    <th>Nombre_cargo</th>
+                                    <th>Estado</th>
+                                    <th>fecha_asistencia</th>
+                                    <th>id_empleado</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="chart tab-pane " id="sales-chart" style="position: relative; height: 300px;">
+                    <div class="card-body">
+                        <table id="tdempleado_hist" class="display responsive nowrap" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Empleado</th>
+                                    <th>Fecha_ingreso</th>
+                                    <th>Nombre_cargo</th>
+                                    <th>Estado</th>
+                                    <th>fecha_asistencia</th>
+                                    <th>id_empleado</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content row">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Registro de asistencia</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <br />
+                        <div class="modal-body">
+                            <form action="/" method="post">
+                                <div class="form-row">
+                                    <input type="hidden" id="txtIdPersona" />
+                                    <input type="hidden" id="txtFECHA" />
+                                    <div class="form-group col-md-8">
+                                        <label>Fecha: @fecha_actual</label>
+
+                                        <label id="empleado"></label>
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-10">
+                                        <label for="Papellido">Concepto</label>
+                                        <select id="concepto" class="form-control">
+                                            <option selected>Seleccione un concepto:</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </form>
+                        </div>
+                        <br />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+          
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+
+@section scripts{
+    <script>
+        $('.nav-link').on('click', function () {
+            let target = $(this).attr('href');
+            $(target).addClass('pippo');
+        });
+
+    $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Tipo_concepto", "Empleado")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#concepto');
+                        var datos = data.data;
+                        console.log();
+                        $(datos).each(function (i, v) {
+                            cargos.append('<option value="' + v.id_concepto + '">' + v.Concepto1 + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+            });
+    function parseMSDate(s) {
+            if (s!=null) {
+                var dregex = /\/Date\((\d*)\)\//;
+                var d = dregex.test(s) ? new Date(parseInt(dregex.exec(s)[1])) : s
+                var fecha_cor = moment(d).format('DD/MM/YYYY');
+                return fecha_cor;
+            }else {
+                return fecha_cor = "";
+            }
+
+        }
+    var tabla_empleado;
+
+        $(document).ready(function () {
+           
+        tabla_empleado=$('#tdempleado').DataTable({
+            "ajax": {
+                "url":"@Url.Action("Listar_EA", "Empleado")",
+                "type": "GET",
+                "contentType":"application/json; charset=utf-8",
+                "dataType":"json"
+            },
+            "columns": [
+                { "data": "Empleado", "autoWidth": true },
+                {"data": "Fecha_ingreso", "autoWidth": true, "render": function (data) {return parseMSDate(data);}},
+                { "data": "Nombre_cargo", "autoWidth": true },
+                { "data": "Estado", "autoWidth": true },
+                {"data": "fecha_asis", "autoWidth": true,"render": function (data) { return parseMSDate(data);}},
+                {"data": "id_empleado", "autoWidth": true, "render": function (data) {
+                       return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
+                       "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                    },
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "150px",
+
+                }],
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        text: 'Agregar Nuevo',
+                        attr: { class: 'btn btn-success btn-sm' },
+                        action: function (e, dt, node, config) {
+                            abrirModal1(0)
+                        }
+                    }
+                 ],
+                 "language": {
+                     "url": "@Url.Content("~/Content/datatable/idioma/datatable.es-ES.json")"
+                 }
+        });
+    });
+
+    function eliminar($idpersona) {
+        alert("Eliminar: "+$idpersona);
+    }
+
+    $(document).ready(function () {
+        $('#btnagregar').click(function (e) {
+            abrirModal1(0);
+        });
+    });
+
+
+        function abrirModal1($idempleado) {
+        
+        var now = moment();
+        var fech = moment(now).format('YYYY-MM-DD');
+        $("#txtIdPersona").val($idempleado);
+        $("#txtFECHA").val(fech);
+
+            if ($idempleado != 0) {
+
+                jQuery.ajax({
+                    url: "@Url.Action("Obtener_empAsis", "Empleado")" + "?idempleado=" + $idempleado,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data != null) {
+                            if (data.data[0].fecha_asis != null) {
+
+                                alert('El empleado ' + data.data[0].Empleado + ' Tiene asistencia registrada');
+                            } else {
+                                document.getElementById('empleado').innerHTML = "Empleado: "+data.data[0].Empleado;
+
+                                $('#exampleModalCenter').modal('show');
+                            }
+
+                        }
+                    }
+                });
+            }
+
+        }
+
+        function Guardar() {
+
+
+            var $data = {
+                oAsistencia: {
+                id_asistencia: 0,
+                id_empleado: parseInt($("#txtIdPersona").val()),
+                id_concepto: parseInt(document.getElementById('concepto').value),
+                Fecha_asistencia: $("#txtFECHA").val()
+                }
+        }
+        jQuery.ajax({
+                url: "@Url.Action("Guardar_ASISTENCIA", "Asistencia")",
+                type: "POST",
+                data: JSON.stringify($data),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data.resultado) {
+                        tabla_empleado.ajax.reload();
+                        $("#exampleModalCenter").modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                        console.log(data);
+                    } else {
+                        alert("No se pudo guardar los cambios");
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                }
+            });
+
+        }
+
+
+
+    </script>
+}
+
+
+
