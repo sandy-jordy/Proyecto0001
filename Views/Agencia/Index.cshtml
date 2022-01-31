@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                REGISTRO DE AGENCIA
+            </div>
+            <br />
+
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">AGENCIA</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <br />
+                        <div class="modal-body">
+                            <form action="/" method="post">
+                                <div class="form-row">
+                                    <input type="hidden" id="txtIdAgencia" readonly />
+                                    <div class="form-group col-md-6">
+                                        <label for="nombre_agencia">AGENCIA</label>
+                                        <input type="text" class="form-control" id="nombre_agencia" placeholder="Nombre Agencia">
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+                            </form>
+
+
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="card-body">
+                <table id="tdagencia" class="display responsive nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>nombre_agencia</th>
+                            <th>mantenimiento</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+
+@section scripts{
+    <script>
+
+
+
+    var tabla_agencia;
+    $(document).ready(function () {
+        tabla_agencia=$('#tdagencia').DataTable({
+            "ajax": {
+                "url":"@Url.Action("Listar","Agencia")",
+                "type": "GET",
+                "contentType":"application/json; charset=utf-8",
+                "dataType":"json"
+            },
+            "columns":[
+                { "data": "Nombre_agencia", "autoWidth": true },
+
+                {
+                    "data": "id_agencia", "autoWidth": true, "render": function (data) {
+                        return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
+                            "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                    },
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "150px",
+
+                }],
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        text: 'Agregar Nuevo',
+                        attr: { class: 'btn btn-success btn-sm' },
+                        action: function (e, dt, node, config) {
+                            abrirModal1(0)
+                        }
+                    }
+                 ],
+                 "language": {
+                     "url": "@Url.Content("~/Content/datatable/idioma/datatable.es-ES.json")"
+                 }
+        });
+    });
+
+    function abrirmodal($idagencia) {
+        alert($idagencia);
+            }
+
+    function eliminar($idagencia) {
+        alert("Eliminar: "+$idagencia);
+    }
+
+    $(document).ready(function () {
+        $('#btnagregar').click(function (e) {
+            abrirModal1(0);
+        });
+    });
+
+    function abrirModal1($id_agencia) {
+
+            $("#txtIdAgencia").val($id_agencia);
+        if ($id_agencia != 0) {
+            
+            jQuery.ajax({
+                url: "@Url.Action("Obtener","Agencia")" + "?idagencia=" + $id_agencia,
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    if (data != null) {
+
+                        
+                        alert(data["Nombre_agencia"])
+                        
+                        $('#exampleModalCenter').modal('show');
+                        $("#nombre_agencia").val(data["Nombre_agencia"]);
+                    }
+                }
+            });
+        }else { 
+                //$("#nombre_agencia").val("");
+                $('#exampleModalCenter').modal('show');    
+               
+            }
+
+        }
+
+
+    function Guardar() {
+            var $data = {
+                oAgencia: {
+                id_agencia: parseInt($("#txtIdAgencia").val()),
+                Nombre_agencia: $("#nombre_agencia").val()
+                }
+            }
+            
+            jQuery.ajax({
+                url: "@Url.Action("Guardar", "Agencia")",
+                type: "POST",
+                data: JSON.stringify($data),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    
+                    if (data.resultado) {
+                        tabla_agencia.ajax.reload();
+                        $("#exampleModalCenter").modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                        alert("Datos Guardados Correctamente");
+                    } else {
+                        alert("No se pudo guardar los cambios");
+                        console.log(data)
+                        console.log()
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                }
+            });
+
+        }
+
+    function Eliminar($idagencia) {
+            if (confirm("¿Realmente desea eliminar?")) {
+                jQuery.ajax({
+                    url: "@Url.Action("Eliminar", "Agencia")" + "?idagencia=" + $idagencia,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.resultado) {
+
+                            tabla_agencia.ajax.reload();
+                        }
+                    }
+                });
+
+
+            }
+        }
+
+
+    </script>
+}
+
