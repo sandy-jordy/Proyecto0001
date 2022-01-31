@@ -192,6 +192,7 @@
                         $('body').removeClass('modal-open');
                         $('.modal-backdrop').remove();
                         alert("Datos Guardados Correctamente");
+                        $("#nombre_agencia").val("");
                     } else {
                         alert("No se pudo guardar los cambios");
                         console.log(data)

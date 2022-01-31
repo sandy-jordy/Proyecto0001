@@ -1952,17 +1952,17 @@
     <Content Include="Views\Empleado\Index.cshtml" />
     <Content Include="Views\Asistencia\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Agencia\Index.cshtml" />
+    <Content Include="Views\ruta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Agencia\" />
     <Folder Include="Views\Asignacion\" />
     <Folder Include="Views\Cargo\" />
     <Folder Include="Views\concepto\" />
     <Folder Include="Views\detalle_asignacion\" />
     <Folder Include="Views\escala_asignacion\" />
     <Folder Include="Views\pais\" />
-    <Folder Include="Views\ruta\" />
     <Folder Include="Views\tipo_asignacion\" />
   </ItemGroup>
   <ItemGroup>
