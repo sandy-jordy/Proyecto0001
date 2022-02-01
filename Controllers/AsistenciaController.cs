@@ -21,7 +21,8 @@ namespace WebAppCA.Controllers
             bool respuesta = true;
             try
             {
-               
+                if (oAsistencia.id_asistencia == 0)
+                {
                     using (Model db = new Model())
                     {
                         db.Asistencia.Add(oAsistencia);
@@ -29,7 +30,24 @@ namespace WebAppCA.Controllers
                         db.Configuration.LazyLoadingEnabled = false;
                     }
                 }
-             
+                else
+                {
+                    using (Model db = new Model())
+                    {
+                        Asistencia tempasistencia = (from p in db.Asistencia
+                                                     where p.id_asistencia == oAsistencia.id_asistencia
+                                                     select p).FirstOrDefault();
+
+                        tempasistencia.id_empleado = oAsistencia.id_empleado;
+                        tempasistencia.id_concepto = oAsistencia.id_concepto;
+                        tempasistencia.Fecha_asistencia = oAsistencia.Fecha_asistencia;
+
+                        db.SaveChanges();
+                        db.Configuration.LazyLoadingEnabled = false;
+                    }
+                }
+                }
+
             catch
             {
                 respuesta = false;
@@ -37,6 +55,8 @@ namespace WebAppCA.Controllers
             }
             return Json(new { resultado = respuesta }, JsonRequestBehavior.AllowGet);
 
-        }
+
+        } 
+        
     }
 }

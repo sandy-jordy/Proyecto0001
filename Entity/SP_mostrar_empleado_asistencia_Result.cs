@@ -19,5 +19,8 @@ namespace WebAppCA.Entity
         public string Nombre_cargo { get; set; }
         public string Estado { get; set; }
         public Nullable<System.DateTime> fecha_asis { get; set; }
+        public Nullable<int> id_asistencia { get; set; }
+        public Nullable<int> id_concepto { get; set; }
+        public string concepto { get; set; }
     }
 }

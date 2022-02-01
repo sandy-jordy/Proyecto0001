@@ -1,10 +1,8 @@
 ﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var fecha_actual = DateTime.Now.ToString("dd/MM/yyyy");
-   
+    var fecha_actual = DateTime.Now.ToString("dd/MM/yyyy");   
 }
-
 
 <!DOCTYPE html>
 <html>
@@ -39,11 +37,13 @@
                             <thead>
                                 <tr>
                                     <th>Empleado</th>
-                                    <th>Fecha_ingreso</th>
-                                    <th>Nombre_cargo</th>
+                                    <th>Fecha ingreso</th>
+                                    <th>Cargo</th>
                                     <th>Estado</th>
-                                    <th>fecha_asistencia</th>
-                                    <th>id_empleado</th>
+                                    <th>fecha asistencia</th>
+                                    <th>concepto</th>
+                                    <th>Mantenimiento</th>
+                                   
                                 </tr>
                             </thead>
 
@@ -56,11 +56,12 @@
                             <thead>
                                 <tr>
                                     <th>Empleado</th>
-                                    <th>Fecha_ingreso</th>
-                                    <th>Nombre_cargo</th>
+                                    <th>Fecha ingreso</th>
+                                    <th>Cargo</th>
                                     <th>Estado</th>
-                                    <th>fecha_asistencia</th>
-                                    <th>id_empleado</th>
+                                    <th>fecha asistencia</th>
+                                    <th>concepto</th>
+                                    <th>Mantenimiento</th>
                                 </tr>
                             </thead>
 
@@ -84,6 +85,8 @@
                                 <div class="form-row">
                                     <input type="hidden" id="txtIdPersona" />
                                     <input type="hidden" id="txtFECHA" />
+                                    <input type="hidden" id="txtidasistencia" />
+                                    <input type="hidden" id="txtidasunto" />
                                     <div class="form-group col-md-8">
                                         <label>Fecha: @fecha_actual</label>
 
@@ -168,8 +171,8 @@
         }
     var tabla_empleado;
 
-        $(document).ready(function () {
-           
+    $(document).ready(function () {
+
         tabla_empleado=$('#tdempleado').DataTable({
             "ajax": {
                 "url":"@Url.Action("Listar_EA", "Empleado")",
@@ -178,18 +181,21 @@
                 "dataType":"json"
             },
             "columns": [
-                { "data": "Empleado", "autoWidth": true },
+                {"data": "Empleado", "autoWidth": true },
                 {"data": "Fecha_ingreso", "autoWidth": true, "render": function (data) {return parseMSDate(data);}},
-                { "data": "Nombre_cargo", "autoWidth": true },
-                { "data": "Estado", "autoWidth": true },
-                {"data": "fecha_asis", "autoWidth": true,"render": function (data) { return parseMSDate(data);}},
-                {"data": "id_empleado", "autoWidth": true, "render": function (data) {
-                       return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
-                       "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar(" + data + ")'><i class='fa fa-trash'></i></button>"
+                {"data": "Nombre_cargo", "autoWidth": true },
+                {"data": "Estado", "autoWidth": true },
+                {"data": "fecha_asis", "autoWidth": true, "render": function (data) { return parseMSDate(data);}},
+                { "data": "concepto", "autoWidth": true },
+                {
+                    "data": "id_empleado", "autoWidth": true, "render": function (data) {
+
+                    return "<button class='btn btn-primary btn-sm' type='button' id='da' onclick='abrirModal1(" + data + ")'><i class='fas fa-upload'></i></button>" +
+                        "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='abrirModal2(" + data + ")'><i class='far fa-edit'></i></button>"
                     },
                     "orderable": false,
                     "searchable": false,
-                    "width": "150px",
+
 
                 }],
                 dom: 'Bfrtip',
@@ -219,12 +225,11 @@
     });
 
 
-        function abrirModal1($idempleado) {
-        
+    function abrirModal2($idempleado) {
+
         var now = moment();
         var fech = moment(now).format('YYYY-MM-DD');
         $("#txtIdPersona").val($idempleado);
-        $("#txtFECHA").val(fech);
 
             if ($idempleado != 0) {
 
@@ -237,27 +242,62 @@
 
                         if (data != null) {
                             if (data.data[0].fecha_asis != null) {
-
-                                alert('El empleado ' + data.data[0].Empleado + ' Tiene asistencia registrada');
-                            } else {
-                                document.getElementById('empleado').innerHTML = "Empleado: "+data.data[0].Empleado;
+                                
+                                $("#txtFECHA").val(parseMSDate(data.data[0].fecha_asis));
+                                $("#txtidasistencia").val(data.data[0].id_asistencia);
+                                $("#txtidasunto").val(data.data[0].id_concepto);
+                                $('#concepto option[value= "' + data.data[0].id_concepto + '"]').prop('selected', true);
+                                //    alert('El empleado ' + data.data[0].Empleado + ' No tiene asistencia registrada');
+                                //} else {
+                                document.getElementById('empleado').innerHTML = "Empleado: " + data.data[0].Empleado;
 
                                 $('#exampleModalCenter').modal('show');
-                            }
+                                /*}*/
 
+                            } else {
+                                alert('El empleado ' + data.data[0].Empleado + ' No tiene asistencia registrada');
+                            }
                         }
                     }
                 });
-            }
+            } 
 
         }
 
-        function Guardar() {
+
+    function abrirModal1($idempleado) {
+        var now = moment();
+        var fech = moment(now).format('YYYY-MM-DD');
+        $("#txtIdPersona").val($idempleado);
+                  jQuery.ajax({
+                    url: "@Url.Action("Obtener_empAsis", "Empleado")" + "?idempleado=" + $idempleado,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data != null) {
+                            $("#txtFECHA").val(fech);
+                                $("#txtidasistencia").val(0);
+                                $("#txtidasunto").val("");
+                                $('#concepto option[selected]').prop('selected', true);
+                                //    alert('El empleado ' + data.data[0].Empleado + ' Tiene asistencia registrada');
+                                //} else {
+                                document.getElementById('empleado').innerHTML = "Empleado: " + data.data[0].Empleado;
+                        /*}*/
+                            $('#exampleModalCenter').modal('show');
+                        }
+                    }
+                  });
+               
+        }
+
+    function Guardar() {
 
 
             var $data = {
                 oAsistencia: {
-                id_asistencia: 0,
+                id_asistencia: $("#txtidasistencia").val(),
                 id_empleado: parseInt($("#txtIdPersona").val()),
                 id_concepto: parseInt(document.getElementById('concepto').value),
                 Fecha_asistencia: $("#txtFECHA").val()

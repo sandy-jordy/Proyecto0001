@@ -109,7 +109,6 @@
                             <th>primer_apellido</th>
                             <th>segundo_apellido</th>
                             <th>fecha_ingreso</th>
-                            <th>id_cargo</th>
                             <th>estado</th>
                             <th>Mantenimiento</th>
                         </tr>
@@ -175,7 +174,7 @@
                 { "data": "Primer_apellido", "autoWidth": true },
                 { "data": "Segundo_apellido", "autoWidth": true },
                 {"data": "Fecha_ingreso", "autoWidth": true, "render": function(data){return parseMSDate(data);}},
-                { "data": "id_cargo", "autoWidth": true },
+               
                 { "data": "Estado", "autoWidth": true },
                 {"data": "id_empleado", "autoWidth": true, "render": function (data) {
                     return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +

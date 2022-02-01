@@ -37,11 +37,6 @@ namespace WebAppCA.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<mostrar_empleado_id_Result>("mostrar_empleado_id", id_empleadoParameter);
         }
     
-        public virtual ObjectResult<SP_mostrar_empleados_Activos_Result> SP_mostrar_empleados_Activos()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleados_Activos_Result>("SP_mostrar_empleados_Activos");
-        }
-    
         public virtual ObjectResult<SP_mostrar_empleado_asistencia_Result> SP_mostrar_empleado_asistencia(Nullable<int> id_empleado)
         {
             var id_empleadoParameter = id_empleado.HasValue ?
@@ -49,6 +44,11 @@ namespace WebAppCA.Entity
                 new ObjectParameter("id_empleado", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleado_asistencia_Result>("SP_mostrar_empleado_asistencia", id_empleadoParameter);
+        }
+    
+        public virtual ObjectResult<SP_mostrar_empleados_Activos_Result> SP_mostrar_empleados_Activos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleados_Activos_Result>("SP_mostrar_empleados_Activos");
         }
     }
 }
