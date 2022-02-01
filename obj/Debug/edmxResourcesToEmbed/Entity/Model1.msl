@@ -15,18 +15,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_Activos" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_Activos">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result">
-          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
-          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
-          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
-          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-          <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SP_mostrar_empleado_asistencia" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleado_asistencia">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleado_asistencia_Result">
@@ -36,6 +24,24 @@
           <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
+          <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_Activos" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_Activos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
+          <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

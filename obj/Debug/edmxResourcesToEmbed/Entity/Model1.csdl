@@ -4,10 +4,10 @@
     <FunctionImport Name="mostrar_empleado_id" ReturnType="Collection(Control_de_asistenciaModel.mostrar_empleado_id_Result)">
       <Parameter Name="id_empleado" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SP_mostrar_empleados_Activos" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result)" />
     <FunctionImport Name="SP_mostrar_empleado_asistencia" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleado_asistencia_Result)">
       <Parameter Name="id_empleado" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="SP_mostrar_empleados_Activos" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result)" />
   </EntityContainer>
   <ComplexType Name="mostrar_empleado_id_Result">
     <Property Type="Int32" Name="id_empleado" Nullable="false" />
@@ -19,14 +19,6 @@
     <Property Type="Int32" Name="id_cargo" Nullable="false" />
     <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
   </ComplexType>
-  <ComplexType Name="SP_mostrar_empleados_Activos_Result">
-    <Property Type="Int32" Name="id_empleado" Nullable="false" />
-    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="64" />
-    <Property Type="DateTime" Name="Fecha_ingreso" Nullable="false" />
-    <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
-  </ComplexType>
   <ComplexType Name="SP_mostrar_empleado_asistencia_Result">
     <Property Type="Int32" Name="id_empleado" Nullable="false" />
     <Property Type="String" Name="Empleado" Nullable="true" MaxLength="64" />
@@ -34,5 +26,19 @@
     <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
     <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
+    <Property Type="Int32" Name="id_asistencia" Nullable="true" />
+    <Property Type="Int32" Name="id_concepto" Nullable="true" />
+    <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_mostrar_empleados_Activos_Result">
+    <Property Type="Int32" Name="id_empleado" Nullable="false" />
+    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="64" />
+    <Property Type="DateTime" Name="Fecha_ingreso" Nullable="false" />
+    <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
+    <Property Type="Int32" Name="id_asistencia" Nullable="true" />
+    <Property Type="Int32" Name="id_concepto" Nullable="true" />
+    <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>
