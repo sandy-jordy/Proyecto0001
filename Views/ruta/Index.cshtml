@@ -212,6 +212,26 @@
         }
 
 
+            function Eliminar($idruta) {
+            if (confirm("¿Realmente desea eliminar?")) {
+                jQuery.ajax({
+                    url: "@Url.Action("Eliminar", "ruta")" + "?idruta=" + $idruta,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.resultado) {
+                            
+                            tabla_ruta.ajax.reload();
+                        }
+                    }
+                });
+
+
+            }
+        }
+
 
     </script>>
 
