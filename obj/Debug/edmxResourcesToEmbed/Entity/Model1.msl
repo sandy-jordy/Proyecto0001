@@ -30,6 +30,23 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ObtenerUsuario" FunctionName="Control_de_asistenciaModel.Store.usp_ObtenerUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.usp_ObtenerUsuario_Result">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Clave" ColumnName="Clave" />
+          <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+          <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="DescripcionRol" ColumnName="DescripcionRol" />
+          <ScalarProperty Name="activo1" ColumnName="activo1" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_Activos" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_Activos">
       <ResultMapping>
         <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result">
@@ -38,10 +55,70 @@
           <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
           <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
           <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
           <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
           <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
           <ScalarProperty Name="concepto" ColumnName="concepto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_activos_asignacion" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_activos_asignacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_activos_asignacion_Result">
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+          <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+          <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
+          <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+          <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="fecha_asig" ColumnName="fecha_asig" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_mostrar_asignacion" FunctionName="Control_de_asistenciaModel.Store.usp_mostrar_asignacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.usp_mostrar_asignacion_Result">
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Camion" ColumnName="Camion" />
+          <ScalarProperty Name="Cajas" ColumnName="Cajas" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+          <ScalarProperty Name="agencia" ColumnName="agencia" />
+          <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+          <ScalarProperty Name="idagencia" ColumnName="idagencia" />
+          <ScalarProperty Name="IDRUTA" ColumnName="IDRUTA" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_mostrar_ruta" FunctionName="Control_de_asistenciaModel.Store.usp_mostrar_ruta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.usp_mostrar_ruta_Result">
+          <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_mostrar_detalle_asignacion" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_detalle_asignacion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_detalle_asignacion_Result">
+          <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+          <ScalarProperty Name="id_detalle_asignacion" ColumnName="id_detalle_asignacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Camion" ColumnName="Camion" />
+          <ScalarProperty Name="Cajas" ColumnName="Cajas" />
+          <ScalarProperty Name="KM" ColumnName="KM" />
+          <ScalarProperty Name="Nombre_pais" ColumnName="Nombre_pais" />
+          <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Tipo_asignacion" ColumnName="Tipo_asignacion" />
+          <ScalarProperty Name="Escala_asignacion" ColumnName="Escala_asignacion" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

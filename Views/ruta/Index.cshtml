@@ -41,16 +41,14 @@
                                         <label for="nombre_ruta">RUTA</label>
                                         <input type="text" class="form-control" id="nombre_ruta" placeholder="Nombre Ruta">
                                     </div>
-
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Agencia</label>
+                                        <select id="Agencia_" class="form-control">
+                                            <option selected>Seleccione un agencia:</option>
+                                        </select>
+                                    </div>
                                 </div>
-
-
-
-
-
-
                             </form>
-
 
                         </div>
                         <br />
@@ -88,7 +86,26 @@
 
 @section    scripts{
     <script>
+    $(document).ready(function () {
 
+                $.ajax({
+                    url: "@Url.Action("Tipo_agencia", "Empleado")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#Agencia_');
+                        var datos = data.data;
+                        $(datos).each(function (i, v) {
+                            cargos.append('<option value="' + v.id_agencia + '">' + v.Nombre_agencia + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+    });
 
         var tabla_ruta;
     $(document).ready(function () {
@@ -154,18 +171,17 @@
                 success: function (data) {
 
                     if (data != null) {
-
-
-                        alert(data["Ruta1"])
-
-                        $('#exampleModalCenter').modal('show');
+                       
                         $("#nombre_ruta").val(data["Ruta1"]);
+                        $('#Agencia_ option[value= "' + data.id_agencia + '"]').prop('selected', true);
+                        $('#exampleModalCenter').modal('show');
                     }
                 }
             });
         }else {
-                //$("#nombre_agencia").val("");
-                $('#exampleModalCenter').modal('show');
+            $("#nombre_agencia").val("");
+            $('#Agencia_ option[selected]').prop('selected', true);
+            $('#exampleModalCenter').modal('show');
 
             }
 
@@ -175,6 +191,7 @@
             var $data = {
                 oRuta: {
                 id_ruta: parseInt($("#txtIdRuta").val()),
+                id_agencia: parseInt(document.getElementById('Agencia_').value),
                 Ruta1: $("#nombre_ruta").val()
                 }
             }
@@ -197,8 +214,7 @@
                         $("#nombre_ruta").val("");
                     } else {
                         alert("No se pudo guardar los cambios");
-                        console.log(data)
-                        console.log()
+                       
                     }
                 },
                 error: function (error) {
@@ -211,26 +227,6 @@
 
         }
 
-
-            function Eliminar($idruta) {
-            if (confirm("¿Realmente desea eliminar?")) {
-                jQuery.ajax({
-                    url: "@Url.Action("Eliminar", "ruta")" + "?idruta=" + $idruta,
-                    type: "GET",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-
-                        if (data.resultado) {
-                            
-                            tabla_ruta.ajax.reload();
-                        }
-                    }
-                });
-
-
-            }
-        }
 
 
     </script>>

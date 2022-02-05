@@ -18,11 +18,7 @@ namespace WebAppCA.Models
         [Key]
         public int id_asignacion { get; set; }
 
-        public int id_agencia { get; set; }
-
         public int id_ruta { get; set; }
-
-        public int id_pais { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime Fecha { get; set; }
@@ -33,10 +29,6 @@ namespace WebAppCA.Models
         public int? Cajas { get; set; }
 
         public double? KM { get; set; }
-
-        public virtual Agencia Agencia { get; set; }
-
-        public virtual Pais Pais { get; set; }
 
         public virtual Ruta Ruta { get; set; }
 

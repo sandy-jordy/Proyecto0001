@@ -3,9 +3,27 @@
   <Function Name="mostrar_empleado_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_empleado" Type="int" Mode="In" />
   </Function>
+  <Function Name="SP_mostrar_detalle_asignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_asignacion" Type="int" Mode="In" />
+  </Function>
   <Function Name="SP_mostrar_empleado_asistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="id_empleado" Type="int" Mode="In" />
   </Function>
-  <Function Name="SP_mostrar_empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_mostrar_empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_agencia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_mostrar_empleados_activos_asignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_agencia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_mostrar_asignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_agencia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_mostrar_ruta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id_agencia" Type="int" Mode="In" />
+  </Function>
+  <Function Name="usp_ObtenerUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="correo" Type="varchar" Mode="In" />
+    <Parameter Name="clave" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="Control_de_asistenciaModelStoreContainer" />
 </Schema>

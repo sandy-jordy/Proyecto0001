@@ -7,7 +7,25 @@
     <FunctionImport Name="SP_mostrar_empleado_asistencia" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleado_asistencia_Result)">
       <Parameter Name="id_empleado" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="SP_mostrar_empleados_Activos" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result)" />
+    <FunctionImport Name="usp_ObtenerUsuario" ReturnType="Collection(Control_de_asistenciaModel.usp_ObtenerUsuario_Result)">
+      <Parameter Name="correo" Mode="In" Type="String" />
+      <Parameter Name="clave" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_mostrar_empleados_Activos" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result)">
+      <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_mostrar_empleados_activos_asignacion" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_activos_asignacion_Result)">
+      <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_mostrar_asignacion" ReturnType="Collection(Control_de_asistenciaModel.usp_mostrar_asignacion_Result)">
+      <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_mostrar_ruta" ReturnType="Collection(Control_de_asistenciaModel.usp_mostrar_ruta_Result)">
+      <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_mostrar_detalle_asignacion" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_detalle_asignacion_Result)">
+      <Parameter Name="id_asignacion" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="mostrar_empleado_id_Result">
     <Property Type="Int32" Name="id_empleado" Nullable="false" />
@@ -30,15 +48,72 @@
     <Property Type="Int32" Name="id_concepto" Nullable="true" />
     <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
   </ComplexType>
+  <ComplexType Name="usp_ObtenerUsuario_Result">
+    <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+    <Property Type="String" Name="Nombres" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Correo" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Clave" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+    <Property Type="Int32" Name="IdRol" Nullable="false" />
+    <Property Type="Boolean" Name="Activo" Nullable="true" />
+    <Property Type="DateTime" Name="FechaRegistro" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DescripcionRol" Nullable="true" MaxLength="60" />
+    <Property Type="Boolean" Name="activo1" Nullable="true" />
+  </ComplexType>
   <ComplexType Name="SP_mostrar_empleados_Activos_Result">
     <Property Type="Int32" Name="id_empleado" Nullable="false" />
-    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="64" />
-    <Property Type="DateTime" Name="Fecha_ingreso" Nullable="false" />
+    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="364" />
+    <Property Type="DateTime" Name="Fecha_ingreso" Nullable="true" Precision="23" />
     <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
-    <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="id_agencia" Nullable="false" />
     <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
     <Property Type="Int32" Name="id_asistencia" Nullable="true" />
     <Property Type="Int32" Name="id_concepto" Nullable="true" />
     <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_mostrar_empleados_activos_asignacion_Result">
+    <Property Type="Int32" Name="id_empleado" Nullable="false" />
+    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="364" />
+    <Property Type="DateTime" Name="Fecha_ingreso" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="id_agencia" Nullable="false" />
+    <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
+    <Property Type="Int32" Name="id_asistencia" Nullable="true" />
+    <Property Type="Int32" Name="id_concepto" Nullable="true" />
+    <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="fecha_asig" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_mostrar_asignacion_Result">
+    <Property Type="Int32" Name="id_asignacion" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" />
+    <Property Type="String" Name="Camion" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Cajas" Nullable="true" />
+    <Property Type="Double" Name="KM" Nullable="true" />
+    <Property Type="String" Name="RUTA" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="agencia" Nullable="true" MaxLength="25" />
+    <Property Type="String" Name="PAIS" Nullable="true" MaxLength="15" />
+    <Property Type="Int32" Name="idagencia" Nullable="true" />
+    <Property Type="Int32" Name="IDRUTA" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_mostrar_ruta_Result">
+    <Property Type="Int32" Name="id_ruta" Nullable="false" />
+    <Property Type="String" Name="Ruta" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="SP_mostrar_detalle_asignacion_Result">
+    <Property Type="Int32" Name="id_asignacion" Nullable="false" />
+    <Property Type="Int32" Name="id_detalle_asignacion" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" />
+    <Property Type="String" Name="Camion" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="Cajas" Nullable="true" />
+    <Property Type="Double" Name="KM" Nullable="true" />
+    <Property Type="String" Name="Nombre_pais" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="id_ruta" Nullable="false" />
+    <Property Type="String" Name="Ruta" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Empleado" Nullable="true" MaxLength="363" />
+    <Property Type="String" Name="Tipo_asignacion" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="Escala_asignacion" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

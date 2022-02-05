@@ -15,9 +15,10 @@ namespace WebAppCA.Entity
     {
         public int id_empleado { get; set; }
         public string Empleado { get; set; }
-        public System.DateTime Fecha_ingreso { get; set; }
+        public Nullable<System.DateTime> Fecha_ingreso { get; set; }
         public string Nombre_cargo { get; set; }
         public string Estado { get; set; }
+        public int id_agencia { get; set; }
         public Nullable<System.DateTime> fecha_asis { get; set; }
         public Nullable<int> id_asistencia { get; set; }
         public Nullable<int> id_concepto { get; set; }

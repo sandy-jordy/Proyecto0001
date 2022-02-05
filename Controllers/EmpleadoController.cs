@@ -8,9 +8,19 @@ namespace WebAppCA.Controllers
     public class EmpleadoController : Controller
     {
         // GET: Empleado
+       
+        private static usp_ObtenerUsuario_Result SesionUsuario;
         public ActionResult Index()
         {
-            return View();
+            if (Session["Usuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+          
         }
         
 
@@ -32,6 +42,16 @@ namespace WebAppCA.Controllers
             using (Model db = new Model())
             {
                 cargos = db.Cargo.ToList();
+                db.Configuration.LazyLoadingEnabled = false;
+            }
+            return Json(new { data = cargos }, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Tipo_agencia()
+        {
+            List<Agencia> cargos = new List<Agencia>();
+            using (Model db = new Model())
+            {
+                cargos = db.Agencia.ToList();
                 db.Configuration.LazyLoadingEnabled = false;
             }
             return Json(new { data = cargos }, JsonRequestBehavior.AllowGet);
@@ -92,6 +112,7 @@ namespace WebAppCA.Controllers
                         tempempleado.Segundo_apellido = oEmpleado.Segundo_apellido;
                         tempempleado.Fecha_ingreso = oEmpleado.Fecha_ingreso;
                         tempempleado.id_cargo = oEmpleado.id_cargo;
+                        tempempleado.id_agencia = oEmpleado.id_agencia;
                         tempempleado.Estado = oEmpleado.Estado;
 
                         db.SaveChanges();
@@ -143,10 +164,18 @@ namespace WebAppCA.Controllers
         }
         public JsonResult Listar_EA()
         {
+            if (Session["Usuario"] != null)
+            {
+                SesionUsuario = (usp_ObtenerUsuario_Result)Session["Usuario"];
+            }
+            else
+            {
+                SesionUsuario = new usp_ObtenerUsuario_Result();
+            }
             List<SP_mostrar_empleados_Activos_Result> lEmpleado = new List<SP_mostrar_empleados_Activos_Result>();
             using (Control_de_asistenciaEntities db = new Control_de_asistenciaEntities())
             {
-                lEmpleado = db.SP_mostrar_empleados_Activos().ToList();
+                lEmpleado = db.SP_mostrar_empleados_Activos(SesionUsuario.IdSucursal).ToList();
                 db.Configuration.LazyLoadingEnabled = false;
             }
             return Json(new { data = lEmpleado }, JsonRequestBehavior.AllowGet);

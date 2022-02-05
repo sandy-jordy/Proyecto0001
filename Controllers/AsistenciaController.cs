@@ -12,7 +12,14 @@ namespace WebAppCA.Controllers
         // GET: Asistencia
         public ActionResult Index()
         {
-            return View();
+            if (Session["Usuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         [HttpPost]

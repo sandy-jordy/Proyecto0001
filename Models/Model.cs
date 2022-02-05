@@ -8,7 +8,7 @@ namespace WebAppCA.Models
     public partial class Model : DbContext
     {
         public Model()
-            : base("name=Model2")
+            : base("name=Model1")
         {
         }
 
@@ -23,17 +23,14 @@ namespace WebAppCA.Models
         public virtual DbSet<Pais> Pais { get; set; }
         public virtual DbSet<Ruta> Ruta { get; set; }
         public virtual DbSet<Tipo_asignacion> Tipo_asignacion { get; set; }
+        public virtual DbSet<ROL> ROL { get; set; }
+        public virtual DbSet<USUARIO> USUARIO { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Agencia>()
-                .HasMany(e => e.Asignacion)
+                .HasMany(e => e.Ruta)
                 .WithRequired(e => e.Agencia)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Asignacion>()
-                .HasMany(e => e.Detalle_asignacion)
-                .WithRequired(e => e.Asignacion)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Cargo>()
@@ -47,6 +44,26 @@ namespace WebAppCA.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Empleado>()
+                .Property(e => e.Primer_nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Empleado>()
+                .Property(e => e.Segundo_nombre)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Empleado>()
+                .Property(e => e.Primer_apellido)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Empleado>()
+                .Property(e => e.Segundo_apellido)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Empleado>()
+                .Property(e => e.Estado)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Empleado>()
                 .HasMany(e => e.Asistencia)
                 .WithRequired(e => e.Empleado)
                 .WillCascadeOnDelete(false);
@@ -57,7 +74,7 @@ namespace WebAppCA.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Pais>()
-                .HasMany(e => e.Asignacion)
+                .HasMany(e => e.Agencia)
                 .WithRequired(e => e.Pais)
                 .WillCascadeOnDelete(false);
 
@@ -65,6 +82,26 @@ namespace WebAppCA.Models
                 .HasMany(e => e.Asignacion)
                 .WithRequired(e => e.Ruta)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ROL>()
+                .Property(e => e.Descripcion)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<USUARIO>()
+                .Property(e => e.Nombres)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<USUARIO>()
+                .Property(e => e.Apellidos)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<USUARIO>()
+                .Property(e => e.Correo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<USUARIO>()
+                .Property(e => e.Clave)
+                .IsUnicode(false);
         }
     }
 }

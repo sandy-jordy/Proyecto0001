@@ -5,10 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SISTEMA CA</title>
-    
+
     @Styles.Render("~/Content/css")
     @Styles.Render("~/bundles/plugin/css")
     @Scripts.Render("~/bundles/modernizr")
+    
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -29,6 +30,7 @@
                     <li>@Html.ActionLink("Asignacion", "Index", "Asignacion")</li>
                     <li>@Html.ActionLink("Agencia", "Index", "Agencia")</li>
                     <li>@Html.ActionLink("Ruta", "Index", "ruta")</li>
+                    <li>@Html.ActionLink("Cerrar Sesion", "CerrarSesion", "Home")</li>
                 </ul>
             </div>
         </div>

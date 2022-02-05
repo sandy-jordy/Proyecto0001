@@ -8,10 +8,28 @@
         <Function Name="mostrar_empleado_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_empleado" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_mostrar_detalle_asignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_asignacion" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_mostrar_empleado_asistencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_empleado" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_mostrar_empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_mostrar_empleados_Activos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_agencia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_mostrar_empleados_activos_asignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_agencia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mostrar_asignacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_agencia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_mostrar_ruta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_agencia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_ObtenerUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="correo" Type="varchar" Mode="In" />
+          <Parameter Name="clave" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="Control_de_asistenciaModelStoreContainer" />
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -24,7 +42,25 @@
           <FunctionImport Name="SP_mostrar_empleado_asistencia" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleado_asistencia_Result)">
           <Parameter Name="id_empleado" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="SP_mostrar_empleados_Activos" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result)" />
+          <FunctionImport Name="usp_ObtenerUsuario" ReturnType="Collection(Control_de_asistenciaModel.usp_ObtenerUsuario_Result)">
+            <Parameter Name="correo" Mode="In" Type="String" />
+            <Parameter Name="clave" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_mostrar_empleados_Activos" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result)">
+          <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_mostrar_empleados_activos_asignacion" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_empleados_activos_asignacion_Result)">
+          <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mostrar_asignacion" ReturnType="Collection(Control_de_asistenciaModel.usp_mostrar_asignacion_Result)">
+          <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_mostrar_ruta" ReturnType="Collection(Control_de_asistenciaModel.usp_mostrar_ruta_Result)">
+          <Parameter Name="id_agencia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_mostrar_detalle_asignacion" ReturnType="Collection(Control_de_asistenciaModel.SP_mostrar_detalle_asignacion_Result)">
+            <Parameter Name="id_asignacion" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="mostrar_empleado_id_Result">
           <Property Type="Int32" Name="id_empleado" Nullable="false" />
@@ -47,16 +83,73 @@
           <Property Type="Int32" Name="id_concepto" Nullable="true" />
           <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="usp_ObtenerUsuario_Result">
+          <Property Type="Int32" Name="IdUsuario" Nullable="false" />
+          <Property Type="String" Name="Nombres" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Apellidos" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Correo" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Clave" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="IdSucursal" Nullable="false" />
+          <Property Type="Int32" Name="IdRol" Nullable="false" />
+          <Property Type="Boolean" Name="Activo" Nullable="true" />
+          <Property Type="DateTime" Name="FechaRegistro" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DescripcionRol" Nullable="true" MaxLength="60" />
+          <Property Type="Boolean" Name="activo1" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="SP_mostrar_empleados_Activos_Result">
           <Property Type="Int32" Name="id_empleado" Nullable="false" />
-          <Property Type="String" Name="Empleado" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="Fecha_ingreso" Nullable="false" />
+          <Property Type="String" Name="Empleado" Nullable="true" MaxLength="364" />
+          <Property Type="DateTime" Name="Fecha_ingreso" Nullable="true" Precision="23" />
           <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
-          <Property Type="String" Name="Estado" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id_agencia" Nullable="false" />
           <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
           <Property Type="Int32" Name="id_asistencia" Nullable="true" />
           <Property Type="Int32" Name="id_concepto" Nullable="true" />
           <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_mostrar_empleados_activos_asignacion_Result">
+          <Property Type="Int32" Name="id_empleado" Nullable="false" />
+          <Property Type="String" Name="Empleado" Nullable="true" MaxLength="364" />
+          <Property Type="DateTime" Name="Fecha_ingreso" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Nombre_cargo" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Estado" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id_agencia" Nullable="false" />
+          <Property Type="DateTime" Name="fecha_asis" Nullable="true" />
+          <Property Type="Int32" Name="id_asistencia" Nullable="true" />
+          <Property Type="Int32" Name="id_concepto" Nullable="true" />
+          <Property Type="String" Name="concepto" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_asig" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mostrar_asignacion_Result">
+          <Property Type="Int32" Name="id_asignacion" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="String" Name="Camion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Cajas" Nullable="true" />
+          <Property Type="Double" Name="KM" Nullable="true" />
+          <Property Type="String" Name="RUTA" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="agencia" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="PAIS" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="idagencia" Nullable="true" />
+          <Property Type="Int32" Name="IDRUTA" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_mostrar_ruta_Result">
+          <Property Type="Int32" Name="id_ruta" Nullable="false" />
+          <Property Type="String" Name="Ruta" Nullable="false" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_mostrar_detalle_asignacion_Result">
+          <Property Type="Int32" Name="id_asignacion" Nullable="false" />
+          <Property Type="Int32" Name="id_detalle_asignacion" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="String" Name="Camion" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="Cajas" Nullable="true" />
+          <Property Type="Double" Name="KM" Nullable="true" />
+          <Property Type="String" Name="Nombre_pais" Nullable="false" MaxLength="15" />
+          <Property Type="Int32" Name="id_ruta" Nullable="false" />
+          <Property Type="String" Name="Ruta" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Empleado" Nullable="true" MaxLength="363" />
+          <Property Type="String" Name="Tipo_asignacion" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="Escala_asignacion" Nullable="false" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -93,6 +186,23 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ObtenerUsuario" FunctionName="Control_de_asistenciaModel.Store.usp_ObtenerUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Control_de_asistenciaModel.usp_ObtenerUsuario_Result">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="DescripcionRol" ColumnName="DescripcionRol" />
+                <ScalarProperty Name="activo1" ColumnName="activo1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_Activos" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_Activos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_Activos_Result">
@@ -101,10 +211,70 @@
                 <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
                 <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
                 <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
                 <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
                 <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
                 <ScalarProperty Name="concepto" ColumnName="concepto" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_mostrar_empleados_activos_asignacion" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_empleados_activos_asignacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_empleados_activos_asignacion_Result">
+                <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Fecha_ingreso" ColumnName="Fecha_ingreso" />
+                <ScalarProperty Name="Nombre_cargo" ColumnName="Nombre_cargo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="id_agencia" ColumnName="id_agencia" />
+                <ScalarProperty Name="fecha_asis" ColumnName="fecha_asis" />
+                <ScalarProperty Name="id_asistencia" ColumnName="id_asistencia" />
+                <ScalarProperty Name="id_concepto" ColumnName="id_concepto" />
+                <ScalarProperty Name="concepto" ColumnName="concepto" />
+                <ScalarProperty Name="fecha_asig" ColumnName="fecha_asig" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mostrar_asignacion" FunctionName="Control_de_asistenciaModel.Store.usp_mostrar_asignacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Control_de_asistenciaModel.usp_mostrar_asignacion_Result">
+                <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Camion" ColumnName="Camion" />
+                <ScalarProperty Name="Cajas" ColumnName="Cajas" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+                <ScalarProperty Name="agencia" ColumnName="agencia" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="idagencia" ColumnName="idagencia" />
+                <ScalarProperty Name="IDRUTA" ColumnName="IDRUTA" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_mostrar_ruta" FunctionName="Control_de_asistenciaModel.Store.usp_mostrar_ruta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Control_de_asistenciaModel.usp_mostrar_ruta_Result">
+                <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_mostrar_detalle_asignacion" FunctionName="Control_de_asistenciaModel.Store.SP_mostrar_detalle_asignacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Control_de_asistenciaModel.SP_mostrar_detalle_asignacion_Result">
+                <ScalarProperty Name="id_asignacion" ColumnName="id_asignacion" />
+                <ScalarProperty Name="id_detalle_asignacion" ColumnName="id_detalle_asignacion" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Camion" ColumnName="Camion" />
+                <ScalarProperty Name="Cajas" ColumnName="Cajas" />
+                <ScalarProperty Name="KM" ColumnName="KM" />
+                <ScalarProperty Name="Nombre_pais" ColumnName="Nombre_pais" />
+                <ScalarProperty Name="id_ruta" ColumnName="id_ruta" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Tipo_asignacion" ColumnName="Tipo_asignacion" />
+                <ScalarProperty Name="Escala_asignacion" ColumnName="Escala_asignacion" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

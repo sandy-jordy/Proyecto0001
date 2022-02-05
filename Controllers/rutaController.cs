@@ -70,10 +70,9 @@ namespace WebAppCA.Controllers
                                                where p.id_ruta == oRuta.id_ruta
                                                select p).FirstOrDefault();
 
-
+                        tempRuta.id_agencia = oRuta.id_agencia;
                         tempRuta.Ruta1 = oRuta.Ruta1;
-
-
+                        
                         db.SaveChanges();
                         db.Configuration.LazyLoadingEnabled = false;
                     }

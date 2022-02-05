@@ -11,7 +11,7 @@ namespace WebAppCA.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pais()
         {
-            Asignacion = new HashSet<Asignacion>();
+            Agencia = new HashSet<Agencia>();
         }
 
         [Key]
@@ -22,6 +22,6 @@ namespace WebAppCA.Models
         public string Nombre_pais { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Asignacion> Asignacion { get; set; }
+        public virtual ICollection<Agencia> Agencia { get; set; }
     }
 }

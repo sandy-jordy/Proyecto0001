@@ -46,9 +46,62 @@ namespace WebAppCA.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleado_asistencia_Result>("SP_mostrar_empleado_asistencia", id_empleadoParameter);
         }
     
-        public virtual ObjectResult<SP_mostrar_empleados_Activos_Result> SP_mostrar_empleados_Activos()
+        public virtual ObjectResult<usp_ObtenerUsuario_Result> usp_ObtenerUsuario(string correo, string clave)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleados_Activos_Result>("SP_mostrar_empleados_Activos");
+            var correoParameter = correo != null ?
+                new ObjectParameter("correo", correo) :
+                new ObjectParameter("correo", typeof(string));
+    
+            var claveParameter = clave != null ?
+                new ObjectParameter("clave", clave) :
+                new ObjectParameter("clave", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ObtenerUsuario_Result>("usp_ObtenerUsuario", correoParameter, claveParameter);
+        }
+    
+        public virtual ObjectResult<SP_mostrar_empleados_Activos_Result> SP_mostrar_empleados_Activos(Nullable<int> id_agencia)
+        {
+            var id_agenciaParameter = id_agencia.HasValue ?
+                new ObjectParameter("id_agencia", id_agencia) :
+                new ObjectParameter("id_agencia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleados_Activos_Result>("SP_mostrar_empleados_Activos", id_agenciaParameter);
+        }
+    
+        public virtual ObjectResult<SP_mostrar_empleados_activos_asignacion_Result> SP_mostrar_empleados_activos_asignacion(Nullable<int> id_agencia)
+        {
+            var id_agenciaParameter = id_agencia.HasValue ?
+                new ObjectParameter("id_agencia", id_agencia) :
+                new ObjectParameter("id_agencia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_empleados_activos_asignacion_Result>("SP_mostrar_empleados_activos_asignacion", id_agenciaParameter);
+        }
+    
+        public virtual ObjectResult<usp_mostrar_asignacion_Result> usp_mostrar_asignacion(Nullable<int> id_agencia)
+        {
+            var id_agenciaParameter = id_agencia.HasValue ?
+                new ObjectParameter("id_agencia", id_agencia) :
+                new ObjectParameter("id_agencia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_mostrar_asignacion_Result>("usp_mostrar_asignacion", id_agenciaParameter);
+        }
+    
+        public virtual ObjectResult<usp_mostrar_ruta_Result> usp_mostrar_ruta(Nullable<int> id_agencia)
+        {
+            var id_agenciaParameter = id_agencia.HasValue ?
+                new ObjectParameter("id_agencia", id_agencia) :
+                new ObjectParameter("id_agencia", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_mostrar_ruta_Result>("usp_mostrar_ruta", id_agenciaParameter);
+        }
+    
+        public virtual ObjectResult<SP_mostrar_detalle_asignacion_Result> SP_mostrar_detalle_asignacion(Nullable<int> id_asignacion)
+        {
+            var id_asignacionParameter = id_asignacion.HasValue ?
+                new ObjectParameter("id_asignacion", id_asignacion) :
+                new ObjectParameter("id_asignacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_mostrar_detalle_asignacion_Result>("SP_mostrar_detalle_asignacion", id_asignacionParameter);
         }
     }
 }

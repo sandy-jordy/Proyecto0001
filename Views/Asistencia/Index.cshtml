@@ -198,16 +198,6 @@
 
 
                 }],
-                dom: 'Bfrtip',
-                buttons: [
-                    {
-                        text: 'Agregar Nuevo',
-                        attr: { class: 'btn btn-success btn-sm' },
-                        action: function (e, dt, node, config) {
-                            abrirModal1(0)
-                        }
-                    }
-                 ],
                  "language": {
                      "url": "@Url.Content("~/Content/datatable/idioma/datatable.es-ES.json")"
                  }
@@ -242,7 +232,7 @@
 
                         if (data != null) {
                             if (data.data[0].fecha_asis != null) {
-                                
+                                console.log(data);
                                 $("#txtFECHA").val(parseMSDate(data.data[0].fecha_asis));
                                 $("#txtidasistencia").val(data.data[0].id_asistencia);
                                 $("#txtidasunto").val(data.data[0].id_concepto);
@@ -277,15 +267,19 @@
                     success: function (data) {
 
                         if (data != null) {
-                            $("#txtFECHA").val(fech);
+                            if (data.data[0].fecha_asis != null) {
+                                alert('El empleado ' + data.data[0].Empleado + ' Tiene asistencia registrada');
+                            } else {
+                                $("#txtFECHA").val(fech);
                                 $("#txtidasistencia").val(0);
                                 $("#txtidasunto").val("");
                                 $('#concepto option[selected]').prop('selected', true);
                                 //    alert('El empleado ' + data.data[0].Empleado + ' Tiene asistencia registrada');
                                 //} else {
                                 document.getElementById('empleado').innerHTML = "Empleado: " + data.data[0].Empleado;
-                        /*}*/
-                            $('#exampleModalCenter').modal('show');
+                                /*}*/
+                                $('#exampleModalCenter').modal('show');
+                            }
                         }
                     }
                   });

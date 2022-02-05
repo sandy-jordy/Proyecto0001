@@ -9,7 +9,6 @@ namespace WebAppCA.Models
     public partial class Detalle_asignacion
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_detalle_asignacion { get; set; }
 
         public int id_asignacion { get; set; }

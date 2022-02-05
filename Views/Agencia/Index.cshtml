@@ -149,19 +149,14 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-
                     if (data != null) {
-
-                        
-                        alert(data["Nombre_agencia"])
-                        
-                        $('#exampleModalCenter').modal('show');
                         $("#nombre_agencia").val(data["Nombre_agencia"]);
+                        $('#exampleModalCenter').modal('show');
                     }
                 }
             });
         }else { 
-                //$("#nombre_agencia").val("");
+                $("#nombre_agencia").val("");
                 $('#exampleModalCenter').modal('show');    
                
             }
@@ -173,6 +168,7 @@
             var $data = {
                 oAgencia: {
                 id_agencia: parseInt($("#txtIdAgencia").val()),
+                id_pais: parseInt(1),
                 Nombre_agencia: $("#nombre_agencia").val()
                 }
             }

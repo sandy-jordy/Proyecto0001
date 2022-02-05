@@ -62,11 +62,17 @@
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="Sapellido">Fecha ingreso</label>
-                                        <input type="date" class="form-control" id="Fingreso" placeholder="">
+                                        <label for="Papellido">Agencia</label>
+                                        <select id="Agencia" class="form-control">
+                                            <option selected>Seleccione un agencia:</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Sapellido">Fecha ingreso</label>
+                                        <input type="date" class="form-control" id="Fingreso" placeholder="">
+                                    </div>
                                     <div class="form-group col-6">
                                         <label for="Papellido">Estado</label>
                                         <div class="form-check form-check-inline">
@@ -126,7 +132,27 @@
 
     @section scripts{
         <script>
-           
+            
+    $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Tipo_agencia", "Empleado")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#Agencia');
+                        var datos = data.data;
+                        $(datos).each(function (i, v) {
+                            cargos.append('<option value="' + v.id_agencia + '">' + v.Nombre_agencia + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+    });
 
     $(document).ready(function () {
 
@@ -174,7 +200,7 @@
                 { "data": "Primer_apellido", "autoWidth": true },
                 { "data": "Segundo_apellido", "autoWidth": true },
                 {"data": "Fecha_ingreso", "autoWidth": true, "render": function(data){return parseMSDate(data);}},
-               
+
                 { "data": "Estado", "autoWidth": true },
                 {"data": "id_empleado", "autoWidth": true, "render": function (data) {
                     return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
@@ -183,7 +209,7 @@
                     "orderable": false,
                     "searchable": false,
                     "width": "150px",
-                   
+
                 }],
                 dom: 'Bfrtip',
                 buttons: [
@@ -216,7 +242,7 @@
     });
 
     function abrirModal1($idpersona) {
-               
+
             $("#txtIdPersona").val($idpersona);
             if ($idpersona != 0) {
 
@@ -234,8 +260,9 @@
                             $("#Papellido").val(data.Primer_apellido);
                             $("#Sapellido").val(data.Segundo_apellido);
                             $("#Fingreso").val(moment(data.Fecha_ingreso).format("DD-MM-YYYY"));
-                            
+
                             $('#cargos option[value= "' + data.id_cargo + '"]').prop('selected', true);
+                            $('#Agencia option[value= "' + data.id_agencia + '"]').prop('selected', true);
                             
                             if (data.Estado == 'Activo') {
                                 $("input[name=Estado][value=Activo]").prop('checked', true);
@@ -253,6 +280,8 @@
                 $("#Sapellido").val("");
                 $("#Fingreso").val("");
                 $('#cargos option[selected]').prop('selected', true);
+                $('#Agencia option[selected]').prop('selected', true);
+                
                 $("input[name=Estado][value=Activo]").prop('checked', false);
                 $("input[name=Estado][value=Inactivo]").prop('checked', false);
                 $('#exampleModalCenter').modal('show');
@@ -270,6 +299,7 @@
                 Segundo_apellido: $("#Sapellido").val(),
                 Fecha_ingreso: $("#Fingreso").val(),
                 id_cargo: parseInt(document.getElementById('cargos').value),
+                id_agencia: parseInt(document.getElementById('Agencia').value),
                 Estado: $('input[name="Estado"]:checked').val()
                 }
             }

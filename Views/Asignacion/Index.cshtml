@@ -1,0 +1,549 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var fecha_actual = DateTime.Now.ToString("dd/MM/yyyy");
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                REGISTRO DE ASIGNACION
+            </div>
+            <br />
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">ASIGNACION</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <br />
+                        <div class="modal-body">
+                            <form action="/" method="post">
+                                <input type="hidden" name="name" id="Idasignacion" value="" />
+                                <div class="form-group col-md-6">
+                                    <label for="Papellido">Fecha</label>
+                                    <label for="Papellido" id="fecha_">@fecha_actual</label>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">camion</label>
+                                        <input type="text" class="form-control" id="txtCamion" placeholder="camion">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Snombre4">Caja</label>
+                                        <input type="text" class="form-control" id="txtCaja" placeholder="caja">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">KM</label>
+                                        <input type="email" class="form-control" id="txtKm" placeholder="Primer apellido">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Rutas</label>
+                                        <select id="cboRutas" class="form-control">
+                                            <option selected>Seleccione una ruta:</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div>
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Fecha</label>
+                                        <input type="text" name="name" id="txtfecha" disabled value="" />
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="asignacionpersonal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">ASIGNACION DE PERSONAL</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <br />
+                        <div class="modal-body">
+                            <form action="/" method="post">
+                                <div class="form-row">
+                                    <input type="hidden" id="txtIdasignacion" />
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Fecha</label>
+                                        <label for="Papellido">@fecha_actual</label>
+
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Empleados</label>
+                                        <select id="cboEmpleado" class="form-control">
+                                            <option selected>Seleccione un empleado:</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Papellido">Tipo asignacion</label>
+                                        <select id="cboTasignacion" class="form-control">
+                                            <option selected>Seleccione un tipo de asignacion:</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <label for="Papellido">Escala asignacion</label>
+                                    <select id="cboEasignacion" class="form-control">
+                                        <option selected>Seleccione una Escala de asignacion:</option>
+                                     
+                                    </select>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="card-body">
+                                                    <table id="tddetalle_asig" class="display responsive" cellspacing="0" style="width:100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Empleado</th>
+                                                                <th>Tipo Asignacion</th>
+                                                                <th>Escala Asignacion</th>
+                                                                <th>Mantenimiento</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card-body">
+
+                <div class="container">
+                    <div class="row">
+                      
+                            <table id="tdempleado" class="display responsive nowrap" cellspacing="0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Camion</th>
+                                        <th>Cajas</th>
+                                        <th>KM</th>
+                                        <th>Agencia</th>
+                                        <th>Ruta</th>
+                                        <th>Mantenimiento</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+    </html>
+
+    @section scripts{
+        <script>
+
+    $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Listar_Ruta", "Asignacion")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#cboRutas');
+                        var datos = data.data;
+                        $(datos).each(function (i, v) {
+                            cargos.append('<option value="' + v.id_ruta + '">' + v.Ruta + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+    });
+
+    $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Tipo_asignacion", "tipo_asignacion")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#cboTasignacion');
+                        var datos = data.data;
+                        $.each(datos, function (i, field) {
+                            /*console.log(field.Tipo_asignacion1);*/
+                            cargos.append('<option value="' + field.id_tipo_asignacion + '">' + field.Tipo_asignacion1 + '</option>');
+                        });
+
+                        //$(datos).each(function (i, v) {
+
+                        //});
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+            });
+
+    $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Tipo_escala_asignacion", "escala_asignacion")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#cboEasignacion');
+                        var datos = data.data;
+                        $(datos).each(function (i, v) {
+                            console.log(v);
+                            cargos.append('<option value="' + v.id_escala_asignacion + '">' + v.Escala_asignacion1 + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+            });
+
+    $(document).ready(function () {
+
+                $.ajax({
+                    url: "@Url.Action("Listar_Emp_asignacion", "Asignacion")",
+                    type: "GET",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        var cargos = $('#cboEmpleado');
+                        var datos = data.data;
+                        $(datos).each(function (i, v) {
+                            cargos.append('<option value="' + v.id_empleado + '">' + v.Empleado + '</option>');
+                        });
+                    },
+                    error: function () {
+                        console.log('err')
+                    }
+
+                });
+    });
+
+    function parseMSDate(s) {
+                if (s != null) {
+                    var dregex = /\/Date\((\d*)\)\//;
+                    var d = dregex.test(s) ? new Date(parseInt(dregex.exec(s)[1])) : s
+                    var fecha_cor = moment(d).format('DD/MM/YYYY');
+                    return fecha_cor;
+                } else {
+                    return fecha_cor = "";
+                }
+            }
+
+    var tabla_empleado;
+
+    $(document).ready(function () {
+        tabla_empleado = $('#tdempleado').DataTable({
+
+            "ajax": {
+                "url":"@Url.Action("Listar_asignacion", "Asignacion")",
+                "type": "GET",
+                "contentType":"application/json; charset=utf-8",
+                "dataType":"json"
+            },
+            "columns": [
+                { "data": "Fecha", "autoWidth": true, "render": function (data) { return parseMSDate(data); }},
+                { "data": "Camion", "autoWidth": true },
+                { "data": "Cajas", "autoWidth": true },
+                { "data": "KM", "autoWidth": true },
+                { "data": "agencia", "autoWidth": true },
+                { "data": "RUTA", "autoWidth": true },
+                {"data": "id_asignacion", "autoWidth": true, "render": function (data) {
+                    return "<button class='btn btn-primary btn-sm' type='button' onclick='abrirModal1(" + data + ")'><i class='fas fa-pen'></i></button>" +
+                        "<button class='btn btn-info btn-sm ml-2' type='button' onclick='abrirModal2(" + data + ")'><i class='fas fa-user'></i></button>"
+                    },
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "150px",
+
+                }],
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        text: 'Agregar Nuevo',
+                        attr: { class: 'btn btn-success btn-sm' },
+                        action: function (e, dt, node, config) {
+                            abrirModal1(0)
+                        }
+                    }
+                 ],
+                 "language": {
+                     "url": "@Url.Content("~/Content/datatable/idioma/datatable.es-ES.json")"
+                 }
+        });
+    });
+
+    var tabla_detalle_asig;
+
+    function abrirModal2($idasignacion) {
+
+        $("#txtIdasignacion").val($idasignacion);
+        if ($idasignacion != 0) {
+            if ($.fn.DataTable.isDataTable('#tddetalle_asig')) {
+                $('#tddetalle_asig').DataTable().destroy();
+            }
+            $('#tddetalle_asig tbody').empty();
+
+            tabla_detalle_asig = $('#tddetalle_asig').DataTable({
+
+            "ajax": {
+                "url": "@Url.Action("Listar_detalle_asignacion", "detalle_asignacion")" + "?idasignacion=" + $idasignacion,
+                "type": "GET",
+                "contentType":"application/json; charset=utf-8",
+                "dataType":"json"
+            },
+            "columns": [
+                { "data": "Empleado", "autoWidth": true},
+                { "data": "Tipo_asignacion", "autoWidth": true },
+                { "data": "Escala_asignacion", "autoWidth": true },
+                { "data": "id_detalle_asignacion", "autoWidth": true, "render": function (data) {
+                    return  "<button class='btn btn-danger btn-sm ml-2' type='button' onclick='Eliminar_detalle_asignacion(" + data + ")'><i class='fa fa-trash'></i></button>"
+                    },
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "150px",
+
+                    "bDestroy": true
+
+                    }],
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        text: 'Agregar Nuevo',
+                        attr: { class: 'btn btn-success btn-sm' },
+                        action: function (e, dt, node, config) {
+                            Guardar_detalle()
+                        }
+                    }
+                ],
+                 "language": {
+                     "url": "@Url.Content("~/Content/datatable/idioma/datatable.es-ES.json")"
+                 }
+                });
+            $('#asignacionpersonal').modal('show');
+
+
+            } else {
+
+            }
+      /*  tabla_detalle_asig.destroy();*/
+        }
+
+    $(document).ready(function () {
+        $('#btnagregar').click(function (e) {
+            abrirModal1(0);
+        });
+    });
+
+    function abrirModal1($idasignacion) {
+
+              $("#Idasignacion").val($idasignacion);
+                if ($idasignacion != 0) {
+
+                jQuery.ajax({
+                    url: "@Url.Action("Obtener","Asignacion")" + "?idasignacion=" + $idasignacion,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data != null) {
+
+                            $("#txtCamion").val(data.Camion);
+                            $("#txtCaja").val(data.Cajas);
+                            $("#txtKm").val(data.KM);
+                            $("#txtfecha").val(moment(data.Fecha).format("DD-MM-YYYY"));
+                            $('#cboRutas option[value= "' + data.id_ruta + '"]').prop('selected', true);
+
+                            $('#exampleModalCenter').modal('show');
+                        }
+                    }
+                });
+            } else {
+                    $("#txtCamion").val("");
+                    $("#txtCaja").val("");
+                    $("#txtKm").val("");
+                    $("#txtfecha").val(moment($('#fecha_').val()).format("DD-MM-YYYY"));
+                    $('#cboRutas option[selected]').prop('selected', true);
+
+                 $('#cargos option[selected]').prop('selected', true);
+                $('#exampleModalCenter').modal('show');
+            }
+
+        }
+
+    function Guardar() {
+            var $data = {
+                oAsignacion: {
+                id_asignacion: parseInt($("#Idasignacion").val()),
+                id_ruta: parseInt(document.getElementById('cboRutas').value),
+                Fecha: $("#txtfecha").val(),
+                Camion: $("#txtCamion").val(),
+                Cajas: $("#txtCaja").val(),
+                KM: $("#txtKm").val()
+                }
+            }
+
+            jQuery.ajax({
+                url: "@Url.Action("Guardar", "Asignacion")",
+                type: "POST",
+                data: JSON.stringify($data),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.resultado) {
+                        tabla_empleado.ajax.reload();
+                        $("#exampleModalCenter").modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                    } else {
+                        alert("No se pudo guardar los cambios");
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+
+                }
+            });
+
+            }
+
+    function Guardar_detalle() {
+               
+                
+            var $data = {
+                oDesignacion: {
+                id_asignacion: parseInt($("#txtIdasignacion").val()),
+                id_empleado: parseInt(document.getElementById('cboEmpleado').value),
+                id_tipo_asignacion: parseInt(document.getElementById('cboTasignacion').value),
+                id_escala_asignacion: parseInt(document.getElementById('cboEasignacion').value),
+                }
+            }
+
+            jQuery.ajax({
+                url: "@Url.Action("Guardar", "detalle_asignacion")",
+                type: "POST",
+                data: JSON.stringify($data),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.resultado) {
+                        tabla_detalle_asig.ajax.reload();
+                        $("#exampleModalCenter").modal('hide');
+                        $('body').removeClass('modal-open');
+                        $('.modal-backdrop').remove();
+                    } else {
+                        alert("No se pudo guardar los cambios");
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                },
+                beforeSend: function () {
+                }
+            });
+            }
+
+    function Eliminar_detalle_asignacion($idDasignacion) {
+            if (confirm("¿Realmente desea eliminar?")) {
+                jQuery.ajax({
+                    url: "@Url.Action("Eliminar_detalle_asig", "detalle_asignacion")" + "?idDasignacion=" + $idDasignacion,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.resultado) {
+
+                            tabla_detalle_asig.ajax.reload();
+                        }
+                    }
+                });
+
+
+            }
+            }
+
+    function Eliminar_detalle($idasignacion) {
+            if (confirm("¿Realmente desea eliminar?")) {
+                jQuery.ajax({
+                    url: "@Url.Action("Eliminar", "Empleado")" + "?idempleado=" + $idempleado,
+                    type: "GET",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data.resultado) {
+
+                            tabla_empleado.ajax.reload();
+                        }
+                    }
+                });
+
+
+            }
+        }
+
+
+        </script>
+    }
+

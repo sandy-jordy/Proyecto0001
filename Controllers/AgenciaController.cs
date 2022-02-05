@@ -10,7 +10,14 @@ namespace WebAppCA.Controllers
         // GET: Agencia
         public ActionResult Index()
         {
-            return View();
+            if (Session["Usuario"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         
         public JsonResult Listar()
@@ -66,9 +73,8 @@ namespace WebAppCA.Controllers
                                                  where p.id_agencia == oAgencia.id_agencia
                                                  select p).FirstOrDefault();
 
-                        
+                        tempagencia.id_pais = oAgencia.id_pais;
                         tempagencia.Nombre_agencia = oAgencia.Nombre_agencia;
-
 
                         db.SaveChanges();
                         db.Configuration.LazyLoadingEnabled = false;
